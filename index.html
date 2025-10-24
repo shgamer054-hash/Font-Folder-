@@ -1,0 +1,174 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Font Folder — Demo</title>
+  <!-- Google Fonts sample set (you can extend the list) -->
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;700&family=Orbitron&family=Pacifico&family=Poppins:wght@400;700&family=Roboto:wght@400;700&family=Fredoka+One&family=Righteous&family=Barlow+Condensed&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#ffffff;--fg:#111111}
+    *{box-sizing:border-box}
+    body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial;margin:0;background:#f6f6f6;color:var(--fg)}
+    header{padding:18px 20px;background:#fff;border-bottom:1px solid #e6e6e6}
+    .container{max-width:1100px;margin:24px auto;padding:0 18px}/* Editor area */
+.editor{background:#fff;padding:18px;border-radius:8px;box-shadow:0 6px 18px rgba(15,15,15,0.03);}
+.top-row{display:flex;gap:12px;align-items:flex-start}
+.textarea-wrap{flex:1}
+textarea#mainText{width:100%;min-height:140px;border:1px solid #e6e6e6;padding:12px;font-size:18px;border-radius:6px;resize:vertical}
+.controls{width:220px;display:flex;flex-direction:column;gap:8px}
+.controls label{font-size:13px;color:#444}
+.controls .btn{padding:8px 10px;border-radius:6px;border:1px solid #ddd;background:#fafafa;cursor:pointer}
+
+/* Font grid */
+.font-grid{margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.font-card{background:#fff;padding:12px;border-radius:8px;border:1px solid #eee;cursor:pointer;display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.preview{font-size:28px;line-height:1.05;color:var(--fg);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.meta{font-size:12px;color:#666}
+
+/* Search + footer */
+.search-row{display:flex;align-items:center;gap:12px;margin-top:12px}
+.search-row input{padding:8px;border:1px solid #e6e6e6;border-radius:6px;width:220px}
+
+/* Responsive */
+@media (max-width:900px){.font-grid{grid-template-columns:repeat(2,1fr)}.controls{width:160px}}
+@media (max-width:600px){.top-row{flex-direction:column}.controls{width:100%}}
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h2 style="margin:0">Font Folder — Demo</h2>
+    </div>
+  </header>  <main class="container">
+    <section class="editor">
+      <div class="top-row">
+        <div class="textarea-wrap">
+          <textarea id="mainText" placeholder="Type your article, name, or any text here...">BUSTAMI</textarea>
+          <div class="search-row">
+            <input id="fontSearch" placeholder="Search fonts (small) — left under editor" aria-label="Search fonts">
+            <span style="font-size:13px;color:#888">(Search filters font cards)</span>
+          </div>
+        </div><aside class="controls" aria-label="Controls">
+      <label>Bold
+        <button id="boldBtn" class="btn">Toggle Bold</button>
+      </label>
+
+      <label>Text Color
+        <input id="colorPicker" type="color" value="#000000" style="width:100%;height:40px;padding:4px;border-radius:6px;border:1px solid #ddd">
+      </label>
+
+      <label>Font size
+        <input id="fontSize" type="range" min="12" max="72" value="28">
+      </label>
+
+      <label>Export
+        <button id="copyText" class="btn">Copy Text</button>
+      </label>
+
+      <div style="font-size:12px;color:#666">Black & White base. Click a font card to apply to the editor above.</div>
+    </aside>
+  </div>
+
+  <div class="font-grid" id="fontGrid" style="margin-top:18px">
+    <!-- font cards injected by JS -->
+  </div>
+</section>
+
+  </main>  <script>
+    // Sample font list (extendable to 100+). Each item: {name, cssFamily}
+    const fonts = [
+      {name:'Modern Sans', family:'Poppins, sans-serif'},
+      {name:'Bold Block', family:'Anton, sans-serif'},
+      {name:'Handwriting', family:'Pacifico, cursive'},
+      {name:'Graffiti', family:'Fredoka One, sans-serif'},
+      {name:'Futuristic', family:'Orbitron, sans-serif'},
+      {name:'Minimal', family:'Roboto, sans-serif'},
+      {name:'Elegant Script', family:'Righteous, cursive'},
+      {name:'Geometric', family:'Montserrat, sans-serif'},
+      {name:'Condensed', family:'Barlow Condensed, sans-serif'},
+      {name:'Mono Stencil', family:'Ubuntu Mono, monospace'}
+    ];
+
+    const grid = document.getElementById('fontGrid');
+    const mainText = document.getElementById('mainText');
+    const colorPicker = document.getElementById('colorPicker');
+    const boldBtn = document.getElementById('boldBtn');
+    const fontSize = document.getElementById('fontSize');
+    const fontSearch = document.getElementById('fontSearch');
+    const copyText = document.getElementById('copyText');
+
+    // Render cards
+    function renderCards(filter=''){
+      grid.innerHTML = '';
+      const q = filter.trim().toLowerCase();
+      fonts.forEach((f,i)=>{
+        if(q && !f.name.toLowerCase().includes(q) && !f.family.toLowerCase().includes(q)) return;
+        const card = document.createElement('div');
+        card.className = 'font-card';
+        card.dataset.family = f.family;
+        card.innerHTML = `<div class="preview" style="font-family:${f.family};color:var(--fg)">${mainText.value.split('\n')[0] || 'BUSTAMI'}</div><div class="meta">${f.name}</div>`;
+        card.addEventListener('click',()=>applyFont(f.family));
+        grid.appendChild(card);
+      });
+    }
+
+    function applyFont(family){
+      mainText.style.fontFamily = family;
+      // apply current bold & size & color
+      mainText.style.fontWeight = isBold ? '700' : '400';
+      mainText.style.fontSize = fontSize.value + 'px';
+      mainText.style.color = colorPicker.value;
+    }
+
+    // initial render
+    renderCards();
+
+    // search
+    fontSearch.addEventListener('input', (e)=>{
+      renderCards(e.target.value);
+    });
+
+    // sync previews when main text changes
+    mainText.addEventListener('input', ()=>{
+      // re-render to update previews (simple approach)
+      renderCards(fontSearch.value);
+    });
+
+    // color
+    colorPicker.addEventListener('input', ()=>{
+      mainText.style.color = colorPicker.value;
+    });
+
+    // bold toggle
+    let isBold = false;
+    boldBtn.addEventListener('click', ()=>{
+      isBold = !isBold;
+      mainText.style.fontWeight = isBold ? '700' : '400';
+      boldBtn.textContent = isBold ? 'Bold: ON' : 'Toggle Bold';
+    });
+
+    // font size
+    fontSize.addEventListener('input', ()=>{
+      mainText.style.fontSize = fontSize.value + 'px';
+    });
+
+    // copy text
+    copyText.addEventListener('click', ()=>{
+      navigator.clipboard.writeText(mainText.value).then(()=>{
+        copyText.textContent = 'Copied!';
+        setTimeout(()=>copyText.textContent='Copy Text',900);
+      });
+    });
+
+    // keyboard: click Enter in search to focus first card
+    fontSearch.addEventListener('keydown', (e)=>{
+      if(e.key==='Enter'){
+        const first = grid.querySelector('.font-card');
+        if(first) first.click();
+      }
+    });
+
+    // Notes: Extend fonts[] with more families (and include the appropriate Google Fonts links in <head>)
+  </script></body>
+</html>
