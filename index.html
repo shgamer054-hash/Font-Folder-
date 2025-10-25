@@ -1,303 +1,146 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Font Folder — Font Generator</title>
-<meta name="description" content="Font Folder — preview 36+ premium fonts in 3 rows, change color & bold and copy with font styling.">
-<!-- Google Fonts (many families used in three rows) -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Font Folder</title>
+<meta name="description" content="Font Folder — preview and copy BUSTAMI text in stylish fonts with color and bold options. Mobile & desktop compatible.">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?
-family=Anton&family=Archivo+Black&family=Asap&family=Barlow:wght@400;700&family=Bebas+Neue&family=BioRhyme+Extended&family=Bree+Serif&family=Caveat&family=Comfortaa&family=Concert+One&family=Courgette&family=Crimson+Text&family=Dancing+Script&family=DM+Sans&family=Fira+Sans&family=Great+Vibes&family=Heebo&family=Inconsolata&family=Inter&family=Jost&family=Josefin+Sans&family=Kanit&family=Karla&family=Lato&family=Libre+Baskerville&family=Lobster&family=Manrope&family=Merriweather&family=Montserrat&family=Mulish&family=Nunito&family=Oswald&family=Pacifico&family=Playfair+Display&family=Poppins&family=Quicksand&family=Raleway&family=Rubik&family=Roboto&family=Satisfy&family=Spectral&family=Source+Sans+3&family=Space+Grotesk&family=Signika&family=Teko&family=Titillium+Web&family=Ubuntu&family=Varela&display=swap"
-rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto&family=Poppins&family=Lobster&family=Pacifico&family=Oswald&family=Raleway&family=Playfair+Display&family=Dancing+Script&family=Bebas+Neue&family=Rubik&family=Teko&family=Montserrat&family=Merriweather&family=Comfortaa&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg1: linear-gradient(120deg,#f6d365 0%, #fda085 45%, #a1c4fd 100%);
-    --card-bg:#fff;
-    --muted:#666;
-    --accentA:linear-gradient(90deg,#f093fb,#f5576c);
-    --accentB:linear-gradient(90deg,#a1c4fd,#c2e9fb);
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{
-    font-family:Inter, Arial, sans-serif;
-    background: var(--bg1);
-    min-height:100vh;padding:30px;
-  }
-  .wrap{max-width:1200px;margin:0 auto;background:var(--card-bg);border-radius:14px;padding:26px;box-shadow:0 18px 36px rgba(0,0,0,0.15)}
-  header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
-  h1{font-size:28px;margin:0;background:var(--accentA);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-  .subtitle{color:var(--muted);font-size:13px}
-  /* Editor */
-  #editor{width:100%;min-height:160px;padding:14px;border-radius:10px;border:2px solid #eee;font-size:16px;line-height:1.5;resize:vertical;margin-top:12px}
-  /* Controls */
-  .controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:12px}
-  .controls label{display:flex;gap:8px;align-items:center;font-weight:600;color:#333}
-  .controls input[type="color"]{width:42px;height:42px;border-radius:50%;border:none;padding:0;cursor:pointer}
-  .btn{padding:9px 14px;border-radius:9px;border:none;cursor:pointer;font-weight:700}
-  .btn-copy{background:var(--accentB);box-shadow:0 6px 14px rgba(0,0,0,0.12)}
-  .btn-copy.copied{opacity:0.95; transform:translateY(-2px)}
-  /* Search */
-  .search-row{display:flex;align-items:center;gap:12px;margin-top:14px}
-  .search-row input{padding:8px 12px;border-radius:9px;border:1px solid #d0d0d0;width:300px}
-  .search-hint{font-size:13px;color:var(--muted)}
-  /* Fonts rows */
-  .fonts-section{margin-top:20px}
-  .row-title{margin:12px 0;font-weight:700;color:#333}
-  .fonts-row{display:flex;gap:12px;flex-wrap:nowrap;overflow:auto;padding-bottom:8px}
-  .fonts-row::-webkit-scrollbar{height:8px}
-  .fonts-row::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.12);border-radius:6px}
-  .font-card{min-width:140px;flex:0 0 140px;padding:12px;border-radius:10px;background:#fbfbfb;border:1px solid #f0f0f0;text-align:center;cursor:pointer;transition:transform .18s,box-shadow .18s}
-  .font-card:hover{transform:translateY(-6px);box-shadow:0 14px 30px rgba(0,0,0,0.08)}
-  .font-demo{font-size:20px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .font-name{font-size:12px;color:var(--muted);margin-top:8px;word-break:break-word}
-  footer{margin-top:22px;padding-top:18px;border-top:1px dashed #eee;color:var(--muted);font-size:14px}
-  /* Responsive */
-  @media (max-width:880px){
-    .font-card{min-width:120px;flex:0 0 120px}
-    .search-row input{width:200px}
-  }
-  @media (max-width:520px){
-    header{flex-direction:column;align-items:flex-start}
-    .search-row{flex-direction:column;align-items:flex-start;gap:8px}
-    .search-row input{width:100%}
-    .font-card{min-width:140px;flex:0 0 140px}
-  }
+:root{
+  --bg: linear-gradient(120deg,#f6d365 0%, #fda085 45%, #a1c4fd 100%);
+  --card-bg:#fff;
+  --accent:linear-gradient(90deg,#f093fb,#f5576c);
+  --text-muted:#666;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:Poppins,sans-serif;background:var(--bg);padding:25px;}
+.wrap{max-width:1100px;margin:0 auto;background:var(--card-bg);padding:25px;border-radius:14px;box-shadow:0 12px 28px rgba(0,0,0,0.18);}
+header h1{font-size:32px;background:var(--accent);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+header .subtitle{color:var(--text-muted);font-size:14px;margin-top:4px;}
+#editor{width:100%;min-height:150px;padding:12px;margin-top:15px;font-size:16px;border-radius:10px;border:2px solid #eee;resize:vertical;}
+.controls{margin-top:15px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
+.controls label{display:flex;gap:6px;align-items:center;font-weight:600;color:#333;}
+.controls input[type=color]{width:40px;height:40px;border-radius:50%;border:none;cursor:pointer;}
+.btn{padding:8px 14px;border-radius:8px;border:none;font-weight:600;cursor:pointer;}
+.btn-copy{background:linear-gradient(90deg,#a1c4fd,#c2e9fb);box-shadow:0 5px 14px rgba(0,0,0,0.12);}
+.fonts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-top:20px;}
+.font-card{padding:12px;background:#fafafa;border-radius:10px;text-align:center;cursor:pointer;transition:transform .18s,box-shadow .18s;}
+.font-card:hover{transform:translateY(-5px);box-shadow:0 12px 26px rgba(0,0,0,0.08);}
+.font-demo{font-size:20px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.font-name{font-size:12px;color:var(--text-muted);margin-top:6px;}
+.search-row{margin-top:15px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+.search-row input{padding:8px 10px;border-radius:8px;border:1px solid #ccc;width:250px;}
+footer{margin-top:25px;padding-top:15px;border-top:1px dashed #eee;color:var(--text-muted);font-size:14px;}
+@media(max-width:600px){.fonts-grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr));}.search-row input{width:100%;}}
 </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div>
-        <h1>Font Folder</h1>
-        <div class="subtitle">Colorful · Professional · 3-row premium font gallery · Copy with font styling</div>
-      </div>
-      <div style="text-align:right;">
-        <div style="font-size:13px;color:var(--muted)">Tip: Click any font (BUSTAMI) to apply. Use Color/Bold then Copy to paste with styling in Word/Gmail.</div>
-      </div>
-    </header>
+<div class="wrap">
+  <header>
+    <h1>Font Folder</h1>
+    <div class="subtitle">Professional & colorful font preview — click BUSTAMI to apply, change color & bold, then copy!</div>
+  </header>
 
-    <!-- Editor -->
-    <textarea id="editor" placeholder="এখানে আপনার নাম, আর্টিকেল বা যেকোনো লেখা টাইপ করুন..."></textarea>
+  <textarea id="editor" placeholder="Type your name, article, or any text here..."></textarea>
 
-    <!-- Controls -->
-    <div class="controls" role="group" aria-label="controls">
-      <label><input type="checkbox" id="bold"> Bold</label>
-      <label>Color <input type="color" id="color" value="#000000"></label>
-      <button class="btn btn-copy" id="copyBtn">Copy (with font)</button>
-    </div>
-
-    <!-- Search -->
-    <div class="search-row">
-      <input type="text" id="search" placeholder="Search fonts (e.g. Poppins, Lobster...)">
-      <div class="search-hint">Search filters fonts across the three rows</div>
-    </div>
-
-    <!-- Fonts: 3 rows (Top 12 in row 1; others in row2 & row3) -->
-    <section class="fonts-section">
-      <div class="row-title">Top 12 Fonts (Row 1)</div>
-      <div class="fonts-row" id="rowTop" aria-label="Top fonts"></div>
-
-      <div class="row-title">Premium Fonts (Row 2)</div>
-      <div class="fonts-row" id="row2" aria-label="Row 2 fonts"></div>
-
-      <div class="row-title">Premium Fonts (Row 3)</div>
-      <div class="fonts-row" id="row3" aria-label="Row 3 fonts"></div>
-    </section>
-
-    <footer>
-      <strong>About Font Folder</strong><br>
-      Font Folder is a professional online font generator that lets you preview premium fonts instantly. Each font preview shows the demo word "BUSTAMI". Click a font to apply it, switch bold and color options, then copy the result with font styling preserved for pasting into rich-text editors. <br><br>
-      <em>SEO:</em> Font Generator, Cool Text, Free Fonts, Stylish Fonts, Font Folder, Name Design, Text Art.
-    </footer>
+  <div class="controls">
+    <label><input type="checkbox" id="bold"> Bold</label>
+    <label>Color <input type="color" id="color" value="#000000"></label>
+    <button class="btn btn-copy" id="copyBtn">Copy (with font)</button>
   </div>
 
+  <div class="search-row">
+    <input type="text" id="search" placeholder="Search fonts...">
+  </div>
+
+  <div class="fonts-grid" id="fontsGrid"></div>
+
+  <footer>
+    <strong>About Font Folder</strong><br>
+    Font Folder is a professional online font generator. Each font shows the demo word "BUSTAMI". Click a font to apply it, use bold and color options, then copy with styling preserved. Works on desktop and mobile. <br><br>
+    <em>SEO Keywords:</em> Font Generator, Stylish Fonts, Cool Text, Font Folder, Name Design, Text Art.
+  </footer>
+</div>
+
 <script>
-/* === Font lists (three rows) ===
-   Row 1: Top 12
-   Row 2: next set
-   Row 3: next set
-*/
-const row1 = [
-  'Poppins','Lobster','Pacifico','Bebas Neue','Dancing Script','Oswald','Raleway','Playfair Display','Abril Fatface','Great Vibes','Rubik','Teko'
+const fonts=[
+"Poppins","Lobster","Pacifico","Bebas Neue","Dancing Script","Oswald","Raleway","Playfair Display","Rubik","Teko","Montserrat","Roboto","Merriweather","Anton","Comfortaa","Caveat","Josefin Sans","Quicksand","Kalam","Arvo","Amatic SC","Shadows Into Light","Satisfy","Courgette","Inconsolata","Ubuntu","Kanit","Exo"
 ];
 
-const row2 = [
-  'Montserrat','Roboto','Merriweather','Anton','Comfortaa','Caveat','Josefin Sans','Quicksand','Kalam','Arvo',
-  'Amatic SC','Shadows Into Light','Satisfy','Courgette','Inconsolata','Ubuntu','Kanit','Exo'
-];
+const grid=document.getElementById('fontsGrid');
+const editor=document.getElementById('editor');
+const boldCheck=document.getElementById('bold');
+const colorInput=document.getElementById('color');
+const searchInput=document.getElementById('search');
+const copyBtn=document.getElementById('copyBtn');
 
-const row3 = [
-  'Prompt','Titillium Web','PT Sans','Libre Baskerville','Cinzel','Bitter','Noto Serif','Noto Sans','Arimo','Work Sans',
-  'Mukta','Sora','Manrope','Inter','Jost','Heebo','Fira Sans','DM Sans'
-];
-
-/* Containers */
-const containers = {
-  rowTop: document.getElementById('rowTop'),
-  row2: document.getElementById('row2'),
-  row3: document.getElementById('row3')
-};
-
-const editor = document.getElementById('editor');
-const boldCheck = document.getElementById('bold');
-const colorInput = document.getElementById('color');
-const searchInput = document.getElementById('search');
-const copyBtn = document.getElementById('copyBtn');
-
-/* Create font card with BUSTAMI demo */
-function makeCard(fontName){
-  const card = document.createElement('button');
-  card.className = 'font-card';
-  card.type = 'button';
-  card.setAttribute('data-font', fontName);
-  card.setAttribute('aria-label', 'Apply font '+fontName);
-
-  const demo = document.createElement('span');
-  demo.className = 'font-demo';
-  demo.textContent = 'BUSTAMI';
-  demo.style.fontFamily = fontName;
-  demo.style.fontWeight = '400';
-
-  const fname = document.createElement('div');
-  fname.className = 'font-name';
-  fname.textContent = fontName;
-
-  card.appendChild(demo);
-  card.appendChild(fname);
-
-  card.addEventListener('click', () => {
-    editor.style.fontFamily = fontName;
-    // small visual focus:
-    document.querySelectorAll('.font-card').forEach(c=> c.style.boxShadow = '');
-    card.style.boxShadow = '0 10px 24px rgba(0,0,0,0.12)';
-    // ensure editor keeps bold/color settings
-    editor.style.fontWeight = boldCheck.checked ? '700' : '400';
-  });
-
+function createCard(font){
+  const card=document.createElement('div');
+  card.className='font-card';
+  card.innerHTML=`<span class="font-demo" style="font-family:'${font}'">BUSTAMI</span><div class="font-name">${font}</div>`;
+  card.onclick=()=>{
+    editor.style.fontFamily=font;
+    document.querySelectorAll('.font-card').forEach(c=>c.style.boxShadow='');
+    card.style.boxShadow='0 10px 24px rgba(0,0,0,0.12)';
+  };
   return card;
 }
 
-/* Populate rows */
-function populate(){
-  containers.rowTop.innerHTML = '';
-  containers.row2.innerHTML = '';
-  containers.row3.innerHTML = '';
-  row1.forEach(f => containers.rowTop.appendChild(makeCard(f)));
-  row2.forEach(f => containers.row2.appendChild(makeCard(f)));
-  row3.forEach(f => containers.row3.appendChild(makeCard(f)));
+function populateFonts(){
+  grid.innerHTML='';
+  fonts.forEach(f=>grid.appendChild(createCard(f)));
 }
-populate();
+populateFonts();
 
-/* Search across all rows */
-function filterFonts(q){
-  q = q.trim().toLowerCase();
-  document.querySelectorAll('.font-card').forEach(card => {
-    const font = card.getAttribute('data-font').toLowerCase();
-    const show = !q || font.includes(q);
-    card.style.display = show ? 'block' : 'none';
+searchInput.oninput=()=>{
+  const q=searchInput.value.toLowerCase();
+  document.querySelectorAll('.font-card').forEach(c=>{
+    c.style.display=c.innerText.toLowerCase().includes(q)?'block':'none';
   });
-}
-searchInput.addEventListener('input', (e) => filterFonts(e.target.value));
+};
 
-/* Bold toggle */
-boldCheck.addEventListener('change', () => {
-  editor.style.fontWeight = boldCheck.checked ? '700' : '400';
-});
+boldCheck.onchange=()=>editor.style.fontWeight=boldCheck.checked?'700':'400';
+colorInput.oninput=()=>editor.style.color=colorInput.value;
 
-/* Color change */
-colorInput.addEventListener('input', () => {
-  editor.style.color = colorInput.value;
-});
+copyBtn.onclick=async()=>{
+  const text=editor.value.trim();
+  if(!text){copyBtn.textContent='Nothing to copy';setTimeout(()=>copyBtn.textContent='Copy (with font)',1200);return;}
+  const fontFamily=editor.style.fontFamily||'Poppins';
+  const fontWeight=editor.style.fontWeight||'400';
+  const color=editor.style.color||'#000';
+  const html=`<div style="font-family:'${fontFamily}';font-weight:${fontWeight};color:${color};white-space:pre-wrap;">${text.replace(/\n/g,"<br>")}</div>`;
 
-/* Copy with font styling (HTML) */
-async function copyWithFont(){
-  const text = editor.value || '';
-  if (!text.trim()){
-    copyBtn.textContent = 'Nothing to copy';
-    setTimeout(()=> copyBtn.textContent = 'Copy (with font)', 1400);
-    return;
-  }
-
-  // compute style values
-  const fontFamily = editor.style.fontFamily || window.getComputedStyle(editor).fontFamily || 'inherit';
-  const fontWeight = editor.style.fontWeight || window.getComputedStyle(editor).fontWeight || '400';
-  const color = editor.style.color || window.getComputedStyle(editor).color || '#000';
-  const fontSize = window.getComputedStyle(editor).fontSize || '16px';
-
-  // build HTML with inline style and preserve newlines
-  const htmlContent = `<div style="font-family:${fontFamily};font-weight:${fontWeight};color:${color};font-size:${fontSize};white-space:pre-wrap;">${escapeHtml(text)}</div>`;
-
-  try {
-    const blobHtml = new Blob([htmlContent], { type: 'text/html' });
-    const blobPlain = new Blob([text], { type: 'text/plain' });
-    const data = [ new ClipboardItem({ 'text/html': blobHtml, 'text/plain': blobPlain }) ];
-    await navigator.clipboard.write(data);
-    flashCopied(true);
-  } catch (err) {
-    try {
-      await navigator.clipboard.writeText(text);
-      flashCopied(false);
-    } catch (err2) {
-      legacyCopy(htmlContent, text);
-    }
-  }
-}
-
-function escapeHtml(unsafe){
-  return unsafe.replace(/&/g, "&amp;")
-               .replace(/</g, "&lt;")
-               .replace(/>/g, "&gt;")
-               .replace(/\n/g, "<br>");
-}
-
-function flashCopied(withStyle){
-  copyBtn.classList.add('copied');
-  copyBtn.textContent = withStyle ? 'Copied (with font)' : 'Copied';
-  setTimeout(()=>{
-    copyBtn.classList.remove('copied');
-    copyBtn.textContent = 'Copy (with font)';
-  },1800);
-}
-
-/* Legacy fallback (execCommand) */
-function legacyCopy(html, plain){
-  const container = document.createElement('div');
-  container.style.position = 'fixed';
-  container.style.left = '-9999px';
-  container.innerHTML = html;
-  document.body.appendChild(container);
-
-  const range = document.createRange();
-  range.selectNodeContents(container);
-  const sel = window.getSelection();
-  sel.removeAllRanges();
-  sel.addRange(range);
-
-  try {
-    document.execCommand('copy');
-    flashCopied(true);
-  } catch (err) {
-    const ta = document.createElement('textarea');
-    ta.value = plain;
+  try{
+    await navigator.clipboard.write([
+      new ClipboardItem({
+        'text/html': new Blob([html],{type:'text/html'}),
+        'text/plain': new Blob([text],{type:'text/plain'})
+      })
+    ]);
+    flashCopied('Copied (with font)');
+  }catch(e){
+    const ta=document.createElement('textarea');
+    ta.value=html;
     document.body.appendChild(ta);
     ta.select();
-    try {
-      document.execCommand('copy');
-      flashCopied(false);
-    } catch (e){}
-    ta.remove();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    flashCopied('Copied (HTML)');
   }
-  sel.removeAllRanges();
-  container.remove();
+};
+
+function flashCopied(msg){
+  copyBtn.textContent=msg;
+  copyBtn.style.opacity='0.85';
+  setTimeout(()=>{copyBtn.textContent='Copy (with font)';copyBtn.style.opacity='1';},1800);
 }
 
-copyBtn.addEventListener('click', copyWithFont);
-
-/* default editor settings */
-editor.style.fontFamily = row1[0];
-editor.style.fontWeight = '400';
-editor.style.color = '#000000';
+// default settings
+editor.style.fontFamily='Poppins';
+editor.style.fontWeight='400';
+editor.style.color='#000';
 </script>
 </body>
 </html>
