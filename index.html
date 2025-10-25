@@ -2,93 +2,198 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Font Folder — Demo</title>
-  <!-- Google Fonts sample set (you can extend the list) -->
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;700&family=Orbitron&family=Pacifico&family=Poppins:wght@400;700&family=Roboto:wght@400;700&family=Fredoka+One&family=Righteous&family=Barlow+Condensed&family=Ubuntu+Mono&display=swap" rel="stylesheet">
-  <style>
-    :root{--bg:#ffffff;--fg:#111111}
+  <title>Font Folder – Free Online Font Preview & Generator Tool</title>
+  <meta name="description" content="Explore 100+ stylish fonts with Font Folder. Instantly preview, customize, and choose your favorite font online for your name, text, or article." />
+  <meta name="keywords" content="font generator, cool text, font style maker, free fonts online, stylish text, typography tool, font preview, name font design, online font creator" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- Core Google Fonts (small initial set for fast first render) -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&family=Poppins:wght@400;700&family=Anton&family=Pacifico&family=Orbitron&family=Fredoka+One&family=Righteous&display=swap" rel="stylesheet">  <style>
+    :root{
+      --bg:#f7f9fc; --card:#ffffff; --muted:#6b7280; --accent1:#7c3aed; --accent2:#06b6d4; --glass: rgba(255,255,255,0.6);
+    }
     *{box-sizing:border-box}
-    body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial;margin:0;background:#f6f6f6;color:var(--fg)}
-    header{padding:18px 20px;background:#fff;border-bottom:1px solid #e6e6e6}
-    .container{max-width:1100px;margin:24px auto;padding:0 18px}/* Editor area */
-.editor{background:#fff;padding:18px;border-radius:8px;box-shadow:0 6px 18px rgba(15,15,15,0.03);}
-.top-row{display:flex;gap:12px;align-items:flex-start}
-.textarea-wrap{flex:1}
-textarea#mainText{width:100%;min-height:140px;border:1px solid #e6e6e6;padding:12px;font-size:18px;border-radius:6px;resize:vertical}
-.controls{width:220px;display:flex;flex-direction:column;gap:8px}
-.controls label{font-size:13px;color:#444}
-.controls .btn{padding:8px 10px;border-radius:6px;border:1px solid #ddd;background:#fafafa;cursor:pointer}
+    html,body{height:100%}
+    body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;margin:0;background:linear-gradient(180deg,var(--bg),#ffffff);color:#0f172a}
+    header{padding:20px 24px;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:white}
+    .container{max-width:1200px;margin:20px auto;padding:0 20px}
+    h1{margin:0;font-size:20px;letter-spacing:0.4px}
+    .sub{font-size:13px;opacity:0.95;margin-top:6px}
 
-/* Font grid */
-.font-grid{margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.font-card{background:#fff;padding:12px;border-radius:8px;border:1px solid #eee;cursor:pointer;display:flex;flex-direction:column;gap:10px;align-items:flex-start}
-.preview{font-size:28px;line-height:1.05;color:var(--fg);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.meta{font-size:12px;color:#666}
+    /* Editor */
+    .panel{background:var(--card);border-radius:12px;padding:18px;box-shadow:0 10px 30px rgba(12,15,20,0.06);margin-top:-28px}
+    .top-row{display:flex;gap:16px;align-items:flex-start}
+    .editor-area{flex:1}
+    textarea#mainText{width:100%;min-height:160px;border:1px solid #e6eef6;padding:14px;font-size:18px;border-radius:10px;resize:vertical;font-family:inherit}
 
-/* Search + footer */
-.search-row{display:flex;align-items:center;gap:12px;margin-top:12px}
-.search-row input{padding:8px;border:1px solid #e6e6e6;border-radius:6px;width:220px}
+    .controls{width:260px;display:flex;flex-direction:column;gap:10px}
+    .control-row{display:flex;gap:8px;align-items:center}
+    label.small{font-size:13px;color:var(--muted)}
+    .btn{padding:10px 12px;border-radius:8px;border:1px solid #e6eef6;background:#fff;cursor:pointer}
+    .btn.primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#fff;border:0}
 
-/* Responsive */
-@media (max-width:900px){.font-grid{grid-template-columns:repeat(2,1fr)}.controls{width:160px}}
-@media (max-width:600px){.top-row{flex-direction:column}.controls{width:100%}}
+    /* Font grid */
+    .font-grid{margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .font-card{background:linear-gradient(180deg,transparent,rgba(0,0,0,0.01));padding:12px;border-radius:8px;border:1px solid #eef3f8;cursor:pointer;display:flex;flex-direction:column;gap:8px;min-height:78px}
+    .preview{font-size:26px;line-height:1.0;color:#111;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .meta{font-size:12px;color:var(--muted)}
 
-  </style>
-</head>
+    /* Search */
+    .search-row{display:flex;align-items:center;gap:10px;margin-top:12px}
+    .search-row input{padding:10px;border:1px solid #eef3f8;border-radius:8px;width:220px}
+
+    /* About */
+    .about{margin-top:20px;padding:16px;border-radius:10px;background:linear-gradient(180deg,#fff, #fbfdff);border:1px solid #eef5fb}
+    .about h3{margin-top:0}
+
+    footer{margin:30px 0 80px;color:var(--muted);font-size:13px}
+
+    /* Responsive */
+    @media (max-width:1000px){.font-grid{grid-template-columns:repeat(2,1fr)}.controls{width:200px}}
+    @media (max-width:700px){.top-row{flex-direction:column}.controls{width:100%}.font-grid{grid-template-columns:1fr}}
+  </style></head>
 <body>
   <header>
     <div class="container">
-      <h2 style="margin:0">Font Folder — Demo</h2>
+      <h1>Font Folder</h1>
+      <div class="sub">Explore 100+ stylish fonts — preview, customize, and pick the perfect typography for your name, title, or article.</div>
     </div>
   </header>  <main class="container">
-    <section class="editor">
+    <section class="panel">
       <div class="top-row">
-        <div class="textarea-wrap">
+        <div class="editor-area">
           <textarea id="mainText" placeholder="Type your article, name, or any text here...">BUSTAMI</textarea>
-          <div class="search-row">
+          <div class="search-row" style="margin-top:12px">
             <input id="fontSearch" placeholder="Search fonts (small) — left under editor" aria-label="Search fonts">
-            <span style="font-size:13px;color:#888">(Search filters font cards)</span>
+            <div style="font-size:13px;color:var(--muted)">Search to filter font cards. Click a card to apply that font to the editor above.</div>
           </div>
         </div><aside class="controls" aria-label="Controls">
-      <label>Bold
-        <button id="boldBtn" class="btn">Toggle Bold</button>
-      </label>
+      <div>
+        <div class="control-row"><label class="small">Bold</label><button id="boldBtn" class="btn">Toggle</button></div>
+      </div>
 
-      <label>Text Color
-        <input id="colorPicker" type="color" value="#000000" style="width:100%;height:40px;padding:4px;border-radius:6px;border:1px solid #ddd">
-      </label>
+      <div>
+        <label class="small">Text Color</label>
+        <input id="colorPicker" type="color" value="#111111" style="width:100%;height:44px;border-radius:8px;border:1px solid #eef3f8">
+      </div>
 
-      <label>Font size
-        <input id="fontSize" type="range" min="12" max="72" value="28">
-      </label>
+      <div>
+        <label class="small">Font Size</label>
+        <input id="fontSize" type="range" min="12" max="96" value="28" style="width:100%">
+      </div>
 
-      <label>Export
+      <div class="control-row">
         <button id="copyText" class="btn">Copy Text</button>
-      </label>
+        <button id="resetBtn" class="btn">Reset</button>
+      </div>
 
-      <div style="font-size:12px;color:#666">Black & White base. Click a font card to apply to the editor above.</div>
+      <div style="font-size:12px;color:var(--muted)">Black & white previews by default. Click any font card to apply it to the editor. Auto-converting all previews from typed text is disabled.</div>
     </aside>
   </div>
 
-  <div class="font-grid" id="fontGrid" style="margin-top:18px">
-    <!-- font cards injected by JS -->
+  <div class="font-grid" id="fontGrid"></div>
+
+  <div class="about">
+    <h3>About Font Folder</h3>
+    <p>Font Folder is a modern and user-friendly online tool that allows you to explore and preview text in over 100 unique fonts. Whether you’re a designer, blogger, or someone who loves experimenting with typography, Font Folder helps you visualize how your name, title, or article looks in different styles. With an intuitive interface, color and bold options, and instant font preview on demand, it’s the perfect place to find the font that fits your creative vision.</p>
+    <p><strong>How it works:</strong> Type your text in the editor above, use the controls to adjust size, color, and boldness, then click any font card below to apply that font. (Note: font previews are not auto-converted across all fonts when you type — this behavior is intentionally disabled to keep previews consistent and avoid performance issues.)</p>
   </div>
 </section>
 
+<footer>© Font Folder — Built with typography lovers in mind.</footer>
+
   </main>  <script>
-    // Sample font list (extendable to 100+). Each item: {name, cssFamily}
+    // 1) Core fonts preloaded in <head> are small set for initial render.
+    // 2) Remaining fonts are defined in the array with googleName for lazy loading on demand.
+
     const fonts = [
-      {name:'Modern Sans', family:'Poppins, sans-serif'},
-      {name:'Bold Block', family:'Anton, sans-serif'},
-      {name:'Handwriting', family:'Pacifico, cursive'},
-      {name:'Graffiti', family:'Fredoka One, sans-serif'},
-      {name:'Futuristic', family:'Orbitron, sans-serif'},
-      {name:'Minimal', family:'Roboto, sans-serif'},
-      {name:'Elegant Script', family:'Righteous, cursive'},
-      {name:'Geometric', family:'Montserrat, sans-serif'},
-      {name:'Condensed', family:'Barlow Condensed, sans-serif'},
-      {name:'Mono Stencil', family:'Ubuntu Mono, monospace'}
+      {name:'Roboto', family:'Roboto, sans-serif', google:'Roboto:wght@400;700'},
+      {name:'Montserrat', family:'Montserrat, sans-serif', google:'Montserrat:wght@400;700'},
+      {name:'Poppins', family:'Poppins, sans-serif', google:'Poppins:wght@400;700'},
+      {name:'Anton', family:'Anton, sans-serif', google:'Anton'},
+      {name:'Pacifico', family:'Pacifico, cursive', google:'Pacifico'},
+      {name:'Orbitron', family:'Orbitron, sans-serif', google:'Orbitron:wght@400;700'},
+      {name:'Fredoka One', family:'Fredoka One, sans-serif', google:'Fredoka+One'},
+      {name:'Righteous', family:'Righteous, cursive', google:'Righteous'},
+      {name:'Open Sans', family:'Open Sans, sans-serif', google:'Open+Sans:wght@400;700'},
+      {name:'Lato', family:'Lato, sans-serif', google:'Lato:wght@400;700'},
+      {name:'Oswald', family:'Oswald, sans-serif', google:'Oswald:wght@400;700'},
+      {name:'Playfair Display', family:'Playfair Display, serif', google:'Playfair+Display:wght@400;700'},
+      {name:'Merriweather', family:'Merriweather, serif', google:'Merriweather:wght@400;700'},
+      {name:'Raleway', family:'Raleway, sans-serif', google:'Raleway:wght@400;700'},
+      {name:'Noto Sans', family:'Noto Sans, sans-serif', google:'Noto+Sans:wght@400;700'},
+      {name:'Nunito', family:'Nunito, sans-serif', google:'Nunito:wght@400;700'},
+      {name:'Ubuntu', family:'Ubuntu, sans-serif', google:'Ubuntu:wght@400;700'},
+      {name:'Karla', family:'Karla, sans-serif', google:'Karla:wght@400;700'},
+      {name:'Josefin Sans', family:'Josefin Sans, sans-serif', google:'Josefin+Sans:wght@400;700'},
+      {name:'Work Sans', family:'Work Sans, sans-serif', google:'Work+Sans:wght@400;700'},
+      {name:'Quicksand', family:'Quicksand, sans-serif', google:'Quicksand:wght@400;700'},
+      {name:'Mulish', family:'Mulish, sans-serif', google:'Mulish:wght@400;700'},
+      {name:'Abril Fatface', family:'Abril Fatface, serif', google:'Abril+Fatface'},
+      {name:'Great Vibes', family:'Great Vibes, cursive', google:'Great+Vibes'},
+      {name:'Satisfy', family:'Satisfy, cursive', google:'Satisfy'},
+      {name:'Lobster', family:'Lobster, cursive', google:'Lobster'},
+      {name:'Dancing Script', family:'Dancing Script, cursive', google:'Dancing+Script'},
+      {name:'Play', family:'Play, sans-serif', google:'Play:wght@400;700'},
+      {name:'Bebas Neue', family:'Bebas Neue, cursive', google:'Bebas+Neue'},
+      {name:'Rubik', family:'Rubik, sans-serif', google:'Rubik:wght@400;700'},
+      {name:'Oxygen', family:'Oxygen, sans-serif', google:'Oxygen:wght@400;700'},
+      {name:'Fira Sans', family:'Fira Sans, sans-serif', google:'Fira+Sans:wght@400;700'},
+      {name:'Inter', family:'Inter, sans-serif', google:'Inter:wght@400;700'},
+      {name:'Alegreya', family:'Alegreya, serif', google:'Alegreya:wght@400;700'},
+      {name:'Arvo', family:'Arvo, serif', google:'Arvo:wght@400;700'},
+      {name:'Cabin', family:'Cabin, sans-serif', google:'Cabin:wght@400;700'},
+      {name:'Cormorant Garamond', family:'Cormorant Garamond, serif', google:'Cormorant+Garamond:wght@400;700'},
+      {name:'Cinzel', family:'Cinzel, serif', google:'Cinzel:wght@400;700'},
+      {name:'Sora', family:'Sora, sans-serif', google:'Sora:wght@400;700'},
+      {name:'Spectral', family:'Spectral, serif', google:'Spectral:wght@400;700'},
+      {name:'Teko', family:'Teko, sans-serif', google:'Teko:wght@400;700'},
+      {name:'Amatic SC', family:'Amatic SC, cursive', google:'Amatic+SC:wght@400;700'},
+      {name:'Old Standard TT', family:'Old Standard TT, serif', google:'Old+Standard+TT'},
+      {name:'PT Sans', family:'PT Sans, sans-serif', google:'PT+Sans:wght@400;700'},
+      {name:'PT Serif', family:'PT Serif, serif', google:'PT+Serif:wght@400;700'},
+      {name:'Bitter', family:'Bitter, serif', google:'Bitter:wght@400;700'},
+      {name:'Noto Serif', family:'Noto Serif, serif', google:'Noto+Serif:wght@400;700'},
+      {name:'Comfortaa', family:'Comfortaa, cursive', google:'Comfortaa:wght@400;700'},
+      {name:'Baloo 2', family:'Baloo 2, cursive', google:'Baloo+2:wght@400;700'},
+      {name:'Varela Round', family:'Varela Round, sans-serif', google:'Varela+Round'},
+      {name:'Prompt', family:'Prompt, sans-serif', google:'Prompt:wght@400;700'},
+      {name:'Heebo', family:'Heebo, sans-serif', google:'Heebo:wght@400;700'},
+      {name:'Manrope', family:'Manrope, sans-serif', google:'Manrope:wght@400;700'},
+      {name:'Jost', family:'Jost, sans-serif', google:'Jost:wght@400;700'},
+      {name:'Spectral SC', family:'Spectral SC, serif', google:'Spectral+SC'},
+      {name:'Josefin Slab', family:'Josefin Slab, serif', google:'Josefin+Slab:wght@400;700'},
+      {name:'Cardo', family:'Cardo, serif', google:'Cardo'},
+      {name:'Muli (Mulish Alt)', family:'Mulish, sans-serif', google:'Mulish:wght@400;700'},
+      {name:'Kanit', family:'Kanit, sans-serif', google:'Kanit:wght@400;700'},
+      {name:'Signika', family:'Signika, sans-serif', google:'Signika:wght@400;700'},
+      {name:'Antonio', family:'Antonio, sans-serif', google:'Antonio'},
+      {name:'Rye', family:'Rye, display', google:'Rye'},
+      {name:'Playfair Display SC', family:'Playfair Display SC, serif', google:'Playfair+Display:ital,wght@0,400;0,700;1,400'},
+      {name:'Eczar', family:'Eczar, serif', google:'Eczar:wght@400;700'},
+      {name:'Hind', family:'Hind, sans-serif', google:'Hind:wght@400;700'},
+      {name:'Mukta', family:'Mukta, sans-serif', google:'Mukta:wght@400;700'},
+      {name:'Maven Pro', family:'Maven Pro, sans-serif', google:'Maven+Pro:wght@400;700'},
+      {name:'Saira', family:'Saira, sans-serif', google:'Saira:wght@400;700'},
+      {name:'Zilla Slab', family:'Zilla Slab, serif', google:'Zilla+Slab:wght@400;700'},
+      {name:'Fjalla One', family:'Fjalla One, sans-serif', google:'Fjalla+One'},
+      {name:'Arimo', family:'Arimo, sans-serif', google:'Arimo:wght@400;700'},
+      {name:'Merriweather Sans', family:'Merriweather Sans, sans-serif', google:'Merriweather+Sans:wght@400;700'},
+      {name:'Bree Serif', family:'Bree Serif, serif', google:'Bree+Serif'},
+      {name:'Cabin Sketch', family:'Cabin Sketch, display', google:'Cabin+Sketch'},
+      {name:'Orbitron Mono', family:'Orbitron, monospace', google:'Orbitron'},
+      {name:'Raleway Dots', family:'Raleway Dots, display', google:'Raleway+Dots'},
+      {name:'Shadows Into Light', family:'Shadows Into Light, cursive', google:'Shadows+Into+Light'},
+      {name:'Suez One', family:'Suez One, serif', google:'Suez+One'},
+      {name:'Trirong', family:'Trirong, serif', google:'Trirong:wght@400;700'},
+      {name:'Ysabeau', family:'Ysabeau, sans-serif', google:'Ysabeau:wght@400;700'}
+      // total ~100 (mix of popular and display fonts). Extend fonts[] to add more.
     ];
+
+    // Keep track of which google fonts are already loaded
+    const loadedGoogle = new Set();
+    // Pre-mark core fonts as loaded (those included in <head>)
+    ['Roboto','Montserrat','Poppins','Anton','Pacifico','Orbitron','Fredoka One','Righteous'].forEach(n=>loadedGoogle.add(n));
 
     const grid = document.getElementById('fontGrid');
     const mainText = document.getElementById('mainText');
@@ -97,42 +202,85 @@ textarea#mainText{width:100%;min-height:140px;border:1px solid #e6e6e6;padding:1
     const fontSize = document.getElementById('fontSize');
     const fontSearch = document.getElementById('fontSearch');
     const copyText = document.getElementById('copyText');
+    const resetBtn = document.getElementById('resetBtn');
 
-    // Render cards
+    function createCard(f){
+      const card = document.createElement('div');
+      card.className = 'font-card';
+      const preview = document.createElement('div');
+      preview.className = 'preview';
+      preview.textContent = (mainText.value.split('
+')[0] || 'BUSTAMI');
+      preview.style.fontFamily = f.family;
+      const meta = document.createElement('div');
+      meta.className = 'meta';
+      meta.textContent = f.name;
+      card.appendChild(preview);
+      card.appendChild(meta);
+
+      // click -> apply font (load if needed)
+      card.addEventListener('click', async ()=>{
+        if(!loadedGoogle.has(f.name)){
+          await loadGoogleFont(f.google, f.name);
+        }
+        applyFont(f.family);
+        // visual feedback
+        card.animate([{transform:'scale(1)'},{transform:'scale(0.98)'},{transform:'scale(1)'}],{duration:220});
+      });
+
+      return card;
+    }
+
     function renderCards(filter=''){
       grid.innerHTML = '';
       const q = filter.trim().toLowerCase();
-      fonts.forEach((f,i)=>{
-        if(q && !f.name.toLowerCase().includes(q) && !f.family.toLowerCase().includes(q)) return;
-        const card = document.createElement('div');
-        card.className = 'font-card';
-        card.dataset.family = f.family;
-        card.innerHTML = `<div class="preview" style="font-family:${f.family};color:var(--fg)">${mainText.value.split('\n')[0] || 'BUSTAMI'}</div><div class="meta">${f.name}</div>`;
-        card.addEventListener('click',()=>applyFont(f.family));
+      fonts.forEach(f=>{
+        if(q && !(f.name.toLowerCase().includes(q) || (f.google && f.google.toLowerCase().includes(q)))) return;
+        const card = createCard(f);
         grid.appendChild(card);
       });
     }
 
     function applyFont(family){
       mainText.style.fontFamily = family;
-      // apply current bold & size & color
+      mainText.style.color = colorPicker.value;
       mainText.style.fontWeight = isBold ? '700' : '400';
       mainText.style.fontSize = fontSize.value + 'px';
-      mainText.style.color = colorPicker.value;
     }
 
-    // initial render
+    // Lazy-load Google font by creating link tag
+    function loadGoogleFont(googleParam, displayName){
+      return new Promise((resolve)=>{
+        if(!googleParam){ resolve(); return; }
+        if(loadedGoogle.has(displayName)) { resolve(); return; }
+        const href = 'https://fonts.googleapis.com/css2?family=' + googleParam + '&display=swap';
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = href;
+        link.onload = ()=>{
+          loadedGoogle.add(displayName);
+          // small timeout to ensure font renders
+          setTimeout(resolve,120);
+        };
+        link.onerror = ()=>{ loadedGoogle.add(displayName); resolve(); };
+        document.head.appendChild(link);
+      });
+    }
+
+    // initial render (do not auto-convert all fonts when typing; previews show current first line only)
     renderCards();
+
+    // update previews when mainText changes (simple approach: update text content of each preview)
+    mainText.addEventListener('input', ()=>{
+      // update visible card previews without loading fonts
+      const previewText = mainText.value.split('
+')[0] || 'BUSTAMI';
+      document.querySelectorAll('.font-card .preview').forEach(p=>p.textContent = previewText);
+    });
 
     // search
     fontSearch.addEventListener('input', (e)=>{
       renderCards(e.target.value);
-    });
-
-    // sync previews when main text changes
-    mainText.addEventListener('input', ()=>{
-      // re-render to update previews (simple approach)
-      renderCards(fontSearch.value);
     });
 
     // color
@@ -140,12 +288,12 @@ textarea#mainText{width:100%;min-height:140px;border:1px solid #e6e6e6;padding:1
       mainText.style.color = colorPicker.value;
     });
 
-    // bold toggle
+    // bold
     let isBold = false;
     boldBtn.addEventListener('click', ()=>{
       isBold = !isBold;
       mainText.style.fontWeight = isBold ? '700' : '400';
-      boldBtn.textContent = isBold ? 'Bold: ON' : 'Toggle Bold';
+      boldBtn.textContent = isBold ? 'Bold: ON' : 'Toggle';
     });
 
     // font size
@@ -153,7 +301,7 @@ textarea#mainText{width:100%;min-height:140px;border:1px solid #e6e6e6;padding:1
       mainText.style.fontSize = fontSize.value + 'px';
     });
 
-    // copy text
+    // copy
     copyText.addEventListener('click', ()=>{
       navigator.clipboard.writeText(mainText.value).then(()=>{
         copyText.textContent = 'Copied!';
@@ -161,14 +309,32 @@ textarea#mainText{width:100%;min-height:140px;border:1px solid #e6e6e6;padding:1
       });
     });
 
-    // keyboard: click Enter in search to focus first card
-    fontSearch.addEventListener('keydown', (e)=>{
+    // reset
+    resetBtn.addEventListener('click', ()=>{
+      mainText.value = 'BUSTAMI';
+      colorPicker.value = '#111111';
+      fontSize.value = 28;
+      isBold = false;
+      boldBtn.textContent = 'Toggle';
+      applyFont('Roboto, sans-serif');
+      document.querySelectorAll('.font-card .preview').forEach(p=>p.textContent = 'BUSTAMI');
+    });
+
+    // optionally pre-load a few popular families for smoother initial UX
+    ['Open Sans','Lato','Oswald','Playfair Display','Merriweather','Raleway','Noto Sans','Nunito','Ubuntu','Karla'].forEach(async name=>{
+      const f = fonts.find(x=>x.name===name);
+      if(f) await loadGoogleFont(f.google, f.name);
+    });
+
+    // accessibility: pressing Enter in search focuses first card
+    fontSearch.addEventListener('keydown',(e)=>{
       if(e.key==='Enter'){
         const first = grid.querySelector('.font-card');
         if(first) first.click();
       }
     });
 
-    // Notes: Extend fonts[] with more families (and include the appropriate Google Fonts links in <head>)
+    // ensure initial editor style
+    applyFont('Roboto, sans-serif');
   </script></body>
 </html>
