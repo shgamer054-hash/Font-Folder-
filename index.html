@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Font Folder</title>
-<meta name="description" content="Font Folder — preview and copy BUSTAMI text in 50+ stylish fonts with color, bold options and PNG export. Mobile & desktop compatible.">
+<meta name="description" content="Font Folder — preview and copy BUSTAMI text in stylish fonts with color, bold options, and PNG export. Works on desktop & mobile.">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto&family=Poppins&family=Lobster&family=Pacifico&family=Oswald&family=Raleway&family=Playfair+Display&family=Dancing+Script&family=Bebas+Neue&family=Rubik&family=Teko&family=Montserrat&family=Merriweather&family=Comfortaa&family=Caveat&family=Josefin+Sans&family=Quicksand&family=Kalam&family=Arvo&family=Amatic+SC&family=Shadows+Into+Light&family=Satisfy&family=Courgette&family=Inconsolata&family=Ubuntu&family=Kanit&family=Exo&family=Prompt&family=Titillium+Web&family=PT+Sans&family=Libre+Baskerville&family=Cinzel&family=Bitter&family=Noto+Serif&family=Noto+Sans&family=Arimo&family=Work+Sans&family=Mukta&family=Sora&family=Manrope&family=Jost&family=Heebo&family=Fira+Sans&family=DM+Sans&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto&family=Poppins&family=Lobster&family=Pacifico&family=Oswald&family=Raleway&family=Playfair+Display&family=Dancing+Script&family=Bebas+Neue&family=Rubik&family=Teko&family=Montserrat&family=Merriweather&family=Comfortaa&family=Caveat&family=Josefin+Sans&family=Quicksand&family=Kalam&family=Arvo&family=Amatic+SC&family=Shadows+Into+Light&family=Satisfy&family=Courgette&family=Inconsolata&family=Ubuntu&family=Kanit&family=Exo&family=Baloo+2&family=Varela+Round&family=Orbitron&family=Fira+Sans&family=Jost&family=Heebo&family=Manrope&family=Work+Sans&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg: linear-gradient(120deg,#f6d365 0%, #fda085 45%, #a1c4fd 100%);
@@ -50,7 +50,7 @@ footer{margin-top:25px;padding-top:15px;border-top:1px dashed #eee;color:var(--t
     <label><input type="checkbox" id="bold"> Bold</label>
     <label>Color <input type="color" id="color" value="#000000"></label>
     <button class="btn btn-copy" id="copyBtn">Copy (with font)</button>
-    <button class="btn btn-image" id="copyImageBtn">Copy as Image</button>
+    <button class="btn btn-image" id="copyImageBtn">Copy as PNG</button>
   </div>
 
   <div class="search-row">
@@ -69,7 +69,7 @@ footer{margin-top:25px;padding-top:15px;border-top:1px dashed #eee;color:var(--t
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
 const fonts=[
-"Poppins","Lobster","Pacifico","Bebas Neue","Dancing Script","Oswald","Raleway","Playfair Display","Rubik","Teko","Montserrat","Roboto","Merriweather","Anton","Comfortaa","Caveat","Josefin Sans","Quicksand","Kalam","Arvo","Amatic SC","Shadows Into Light","Satisfy","Courgette","Inconsolata","Ubuntu","Kanit","Exo","Prompt","Titillium Web","PT Sans","Libre Baskerville","Cinzel","Bitter","Noto Serif","Noto Sans","Arimo","Work Sans","Mukta","Sora","Manrope","Jost","Heebo","Fira Sans","DM Sans"
+"Poppins","Lobster","Pacifico","Bebas Neue","Dancing Script","Oswald","Raleway","Playfair Display","Rubik","Teko","Montserrat","Roboto","Merriweather","Anton","Comfortaa","Caveat","Josefin Sans","Quicksand","Kalam","Arvo","Amatic SC","Shadows Into Light","Satisfy","Courgette","Inconsolata","Ubuntu","Kanit","Exo","Baloo 2","Varela Round","Orbitron","Fira Sans","Jost","Heebo","Manrope","Work Sans"
 ];
 
 const grid=document.getElementById('fontsGrid');
@@ -135,4 +135,35 @@ copyBtn.onclick=async()=>{
 };
 
 copyImageBtn.onclick=()=>{
-  if(!editor.value.trim()){copyImageBtn.textContent='Nothing to copy'; setTimeout(()=>copyImageBtn.textContent='Copy as Image',1200);
+  if(!editor.value.trim()){copyImageBtn.textContent='Nothing to copy'; setTimeout(()=>copyImageBtn.textContent='Copy as PNG',1200); return;}
+  const tempDiv=document.createElement('div');
+  tempDiv.style.fontFamily=editor.style.fontFamily;
+  tempDiv.style.fontWeight=editor.style.fontWeight;
+  tempDiv.style.color=editor.style.color;
+  tempDiv.style.padding='10px';
+  tempDiv.style.background='#fff';
+  tempDiv.style.fontSize='20px';
+  tempDiv.innerText=editor.value;
+  document.body.appendChild(tempDiv);
+  html2canvas(tempDiv).then(canvas=>{
+    canvas.toBlob(blob=>{
+      navigator.clipboard.write([new ClipboardItem({'image/png': blob})]);
+      flashCopied('Copied as PNG');
+      document.body.removeChild(tempDiv);
+    });
+  });
+};
+
+function flashCopied(msg){
+  copyBtn.textContent=msg;
+  copyBtn.style.opacity='0.85';
+  setTimeout(()=>{copyBtn.textContent='Copy (with font)';copyBtn.style.opacity='1';},1800);
+}
+
+// default settings
+editor.style.fontFamily='Poppins';
+editor.style.fontWeight='400';
+editor.style.color='#000';
+</script>
+</body>
+</html>
