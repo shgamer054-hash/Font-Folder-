@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Font Folder</title>
-<meta name="description" content="Font Folder — preview and copy BUSTAMI text in stylish fonts with color and bold options. Mobile & desktop compatible.">
+<meta name="description" content="Font Folder — preview and copy BUSTAMI text in 50+ stylish fonts with color, bold options and PNG export. Mobile & desktop compatible.">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto&family=Poppins&family=Lobster&family=Pacifico&family=Oswald&family=Raleway&family=Playfair+Display&family=Dancing+Script&family=Bebas+Neue&family=Rubik&family=Teko&family=Montserrat&family=Merriweather&family=Comfortaa&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto&family=Poppins&family=Lobster&family=Pacifico&family=Oswald&family=Raleway&family=Playfair+Display&family=Dancing+Script&family=Bebas+Neue&family=Rubik&family=Teko&family=Montserrat&family=Merriweather&family=Comfortaa&family=Caveat&family=Josefin+Sans&family=Quicksand&family=Kalam&family=Arvo&family=Amatic+SC&family=Shadows+Into+Light&family=Satisfy&family=Courgette&family=Inconsolata&family=Ubuntu&family=Kanit&family=Exo&family=Prompt&family=Titillium+Web&family=PT+Sans&family=Libre+Baskerville&family=Cinzel&family=Bitter&family=Noto+Serif&family=Noto+Sans&family=Arimo&family=Work+Sans&family=Mukta&family=Sora&family=Manrope&family=Jost&family=Heebo&family=Fira+Sans&family=DM+Sans&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg: linear-gradient(120deg,#f6d365 0%, #fda085 45%, #a1c4fd 100%);
@@ -16,7 +16,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:Poppins,sans-serif;background:var(--bg);padding:25px;}
-.wrap{max-width:1100px;margin:0 auto;background:var(--card-bg);padding:25px;border-radius:14px;box-shadow:0 12px 28px rgba(0,0,0,0.18);}
+.wrap{max-width:1200px;margin:0 auto;background:var(--card-bg);padding:25px;border-radius:14px;box-shadow:0 12px 28px rgba(0,0,0,0.18);}
 header h1{font-size:32px;background:var(--accent);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 header .subtitle{color:var(--text-muted);font-size:14px;margin-top:4px;}
 #editor{width:100%;min-height:150px;padding:12px;margin-top:15px;font-size:16px;border-radius:10px;border:2px solid #eee;resize:vertical;}
@@ -25,6 +25,7 @@ header .subtitle{color:var(--text-muted);font-size:14px;margin-top:4px;}
 .controls input[type=color]{width:40px;height:40px;border-radius:50%;border:none;cursor:pointer;}
 .btn{padding:8px 14px;border-radius:8px;border:none;font-weight:600;cursor:pointer;}
 .btn-copy{background:linear-gradient(90deg,#a1c4fd,#c2e9fb);box-shadow:0 5px 14px rgba(0,0,0,0.12);}
+.btn-image{background:linear-gradient(90deg,#f093fb,#f5576c);box-shadow:0 5px 14px rgba(0,0,0,0.12);}
 .fonts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-top:20px;}
 .font-card{padding:12px;background:#fafafa;border-radius:10px;text-align:center;cursor:pointer;transition:transform .18s,box-shadow .18s;}
 .font-card:hover{transform:translateY(-5px);box-shadow:0 12px 26px rgba(0,0,0,0.08);}
@@ -40,7 +41,7 @@ footer{margin-top:25px;padding-top:15px;border-top:1px dashed #eee;color:var(--t
 <div class="wrap">
   <header>
     <h1>Font Folder</h1>
-    <div class="subtitle">Professional & colorful font preview — click BUSTAMI to apply, change color & bold, then copy!</div>
+    <div class="subtitle">Professional & colorful font preview — click BUSTAMI to apply, change color & bold, then copy as text or image!</div>
   </header>
 
   <textarea id="editor" placeholder="Type your name, article, or any text here..."></textarea>
@@ -49,6 +50,7 @@ footer{margin-top:25px;padding-top:15px;border-top:1px dashed #eee;color:var(--t
     <label><input type="checkbox" id="bold"> Bold</label>
     <label>Color <input type="color" id="color" value="#000000"></label>
     <button class="btn btn-copy" id="copyBtn">Copy (with font)</button>
+    <button class="btn btn-image" id="copyImageBtn">Copy as Image</button>
   </div>
 
   <div class="search-row">
@@ -59,14 +61,15 @@ footer{margin-top:25px;padding-top:15px;border-top:1px dashed #eee;color:var(--t
 
   <footer>
     <strong>About Font Folder</strong><br>
-    Font Folder is a professional online font generator. Each font shows the demo word "BUSTAMI". Click a font to apply it, use bold and color options, then copy with styling preserved. Works on desktop and mobile. <br><br>
+    Font Folder is a professional online font generator. Each font shows the demo word "BUSTAMI". Click a font to apply it, use bold and color options, then copy with styling preserved or copy as image for plain text editors. Works on desktop and mobile. <br><br>
     <em>SEO Keywords:</em> Font Generator, Stylish Fonts, Cool Text, Font Folder, Name Design, Text Art.
   </footer>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
 const fonts=[
-"Poppins","Lobster","Pacifico","Bebas Neue","Dancing Script","Oswald","Raleway","Playfair Display","Rubik","Teko","Montserrat","Roboto","Merriweather","Anton","Comfortaa","Caveat","Josefin Sans","Quicksand","Kalam","Arvo","Amatic SC","Shadows Into Light","Satisfy","Courgette","Inconsolata","Ubuntu","Kanit","Exo"
+"Poppins","Lobster","Pacifico","Bebas Neue","Dancing Script","Oswald","Raleway","Playfair Display","Rubik","Teko","Montserrat","Roboto","Merriweather","Anton","Comfortaa","Caveat","Josefin Sans","Quicksand","Kalam","Arvo","Amatic SC","Shadows Into Light","Satisfy","Courgette","Inconsolata","Ubuntu","Kanit","Exo","Prompt","Titillium Web","PT Sans","Libre Baskerville","Cinzel","Bitter","Noto Serif","Noto Sans","Arimo","Work Sans","Mukta","Sora","Manrope","Jost","Heebo","Fira Sans","DM Sans"
 ];
 
 const grid=document.getElementById('fontsGrid');
@@ -75,6 +78,7 @@ const boldCheck=document.getElementById('bold');
 const colorInput=document.getElementById('color');
 const searchInput=document.getElementById('search');
 const copyBtn=document.getElementById('copyBtn');
+const copyImageBtn=document.getElementById('copyImageBtn');
 
 function createCard(font){
   const card=document.createElement('div');
@@ -111,7 +115,6 @@ copyBtn.onclick=async()=>{
   const fontWeight=editor.style.fontWeight||'400';
   const color=editor.style.color||'#000';
   const html=`<div style="font-family:'${fontFamily}';font-weight:${fontWeight};color:${color};white-space:pre-wrap;">${text.replace(/\n/g,"<br>")}</div>`;
-
   try{
     await navigator.clipboard.write([
       new ClipboardItem({
@@ -131,16 +134,5 @@ copyBtn.onclick=async()=>{
   }
 };
 
-function flashCopied(msg){
-  copyBtn.textContent=msg;
-  copyBtn.style.opacity='0.85';
-  setTimeout(()=>{copyBtn.textContent='Copy (with font)';copyBtn.style.opacity='1';},1800);
-}
-
-// default settings
-editor.style.fontFamily='Poppins';
-editor.style.fontWeight='400';
-editor.style.color='#000';
-</script>
-</body>
-</html>
+copyImageBtn.onclick=()=>{
+  if(!editor.value.trim()){copyImageBtn.textContent='Nothing to copy'; setTimeout(()=>copyImageBtn.textContent='Copy as Image',1200);
