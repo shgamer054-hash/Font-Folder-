@@ -1,715 +1,165 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ফন্ট ফোল্ডার - ১০০+ ইউনিক ফন্ট | আর্টিকেল ও নাম লেখার জন্য পারফেক্ট ফন্ট</title>
-    <meta name="description" content="ফন্ট ফোল্ডারে ১০০+ ইউনিক ফন্ট দিয়ে আর্টিকেল, নাম, স্ট্যাটাস ও ক্রিয়েটিভ টেক্সট লিখুন। বাংলা ও ইংরেজি ফন্ট কালেকশন।">
-    <meta name="keywords" content="ফন্ট, বাংলা ফন্ট, ইংরেজি ফন্ট, আর্টিকেল লেখা, নাম লেখা, টেক্সট স্টাইল, ফন্ট জেনারেটর, কুল টেক্সট">
-    <meta name="author" content="Font Folder">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="ফন্ট ফোল্ডার - ১০০+ ইউনিক ফন্ট কালেকশন">
-    <meta property="og:description" content="আর্টিকেল, নাম ও ক্রিয়েটিভ টেক্সট লেখার জন্য ১০০+ ইউনিক ফন্ট">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://fontfolder.com">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --primary: #6C63FF;
-            --secondary: #FF6584;
-            --accent: #36D1DC;
-            --success: #4CAF50;
-            --background: #f8f9fa;
-            --card-bg: #ffffff;
-            --text: #333333;
-            --text-light: #666666;
-            --shadow: 0 10px 30px rgba(0,0,0,0.1);
-            --gradient: linear-gradient(135deg, var(--primary), var(--accent));
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Font Folder – Stylish Font Generator</title>
+<meta name="description" content="Font Folder is a colorful, professional font generator. Type names, articles, or stylish text with 100+ unique fonts, bold & color options, and copy your cool text easily.">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+  body{background:linear-gradient(120deg,#ffecd2,#fcb69f,#a1c4fd);min-height:100vh;padding:30px;}
+  .container{max-width:1200px;margin:auto;background:#fff;border-radius:20px;box-shadow:0 10px 25px rgba(0,0,0,0.2);padding:30px;}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  h1{text-align:center;margin-bottom:20px;font-size:2.2rem;background:linear-gradient(90deg,#f093fb,#f5576c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 
-        body {
-            background-color: var(--background);
-            color: var(--text);
-            font-family: 'Hind Siliguri', 'Poppins', sans-serif;
-            line-height: 1.6;
-            padding: 20px;
-            min-height: 100vh;
-        }
+  textarea{width:100%;min-height:150px;padding:15px;border:2px solid #ccc;border-radius:10px;font-size:1.2rem;margin-bottom:15px;resize:vertical;transition:0.3s;}
+  textarea:focus{border-color:#f093fb;outline:none;}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+  .controls{display:flex;align-items:center;flex-wrap:wrap;gap:20px;margin-bottom:20px;}
+  .controls label{font-weight:600;}
+  .controls input[type=color]{border:none;width:40px;height:40px;border-radius:50%;cursor:pointer;}
+  .copy-btn{padding:8px 15px;background:linear-gradient(90deg,#ff9a9e,#fad0c4);border:none;border-radius:8px;cursor:pointer;font-weight:bold;}
+  .copy-btn:hover{background:linear-gradient(90deg,#a1c4fd,#c2e9fb);}
 
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 30px;
-            background: var(--gradient);
-            border-radius: 15px;
-            color: white;
-            box-shadow: var(--shadow);
-        }
+  .search-box{margin-bottom:20px;}
+  .search-box input{width:250px;padding:8px 12px;border-radius:8px;border:1px solid #aaa;}
 
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
+  .section-title{margin:25px 0 10px;font-size:1.4rem;color:#444;border-left:4px solid #f5576c;padding-left:10px;}
 
-        .tagline {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 15px;
-        }
+  .fonts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:15px;}
+  .font-item{padding:15px;text-align:center;border-radius:10px;cursor:pointer;border:1px solid #ddd;transition:all 0.3s ease;font-size:1.2rem;background:#fafafa;}
+  .font-item:hover{transform:scale(1.05);border-color:#f5576c;background:#ffe5ec;}
 
-        .top-fonts {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .top-font-btn {
-            padding: 8px 16px;
-            background: rgba(255,255,255,0.2);
-            border: 1px solid rgba(255,255,255,0.3);
-            border-radius: 20px;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Hind Siliguri', sans-serif;
-        }
-
-        .top-font-btn:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateY(-2px);
-        }
-
-        .editor-section {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: var(--shadow);
-        }
-
-        #textEditor {
-            width: 100%;
-            height: 200px;
-            padding: 20px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 20px;
-            resize: vertical;
-            transition: all 0.3s ease;
-            font-family: 'Hind Siliguri', sans-serif;
-            line-height: 1.8;
-        }
-
-        #textEditor:focus {
-            border-color: var(--primary);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
-        }
-
-        .controls-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .left-controls {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        #searchFont {
-            padding: 10px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            width: 220px;
-            font-family: 'Hind Siliguri', sans-serif;
-            transition: all 0.3s ease;
-        }
-
-        #searchFont:focus {
-            border-color: var(--primary);
-            outline: none;
-        }
-
-        .control-btn {
-            padding: 10px 15px;
-            background: var(--card-bg);
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: all 0.3s ease;
-            font-family: 'Hind Siliguri', sans-serif;
-            font-weight: 500;
-        }
-
-        .control-btn:hover {
-            background: #f0f0f0;
-        }
-
-        .control-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        #colorPicker {
-            width: 40px;
-            height: 40px;
-            border: none;
-            background: transparent;
-            cursor: pointer;
-        }
-
-        .right-controls {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .size-control {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        #fontSize {
-            width: 120px;
-        }
-
-        #copyBtn {
-            padding: 12px 24px;
-            background: var(--gradient);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-family: 'Hind Siliguri', sans-serif;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        #copyBtn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.4);
-        }
-
-        .font-gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .font-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow);
-            border: 2px solid transparent;
-            display: flex;
-            flex-direction: column;
-            height: 120px;
-            justify-content: center;
-        }
-
-        .font-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-
-        .font-card.active {
-            border-color: var(--primary);
-            background: rgba(108, 99, 255, 0.05);
-        }
-
-        .font-preview {
-            font-size: 24px;
-            margin-bottom: 8px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            font-weight: 600;
-        }
-
-        .font-name {
-            font-size: 13px;
-            color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 500;
-        }
-
-        .stats {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
-            padding: 20px;
-            background: var(--card-bg);
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        .article-section {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 30px;
-            margin-top: 40px;
-            box-shadow: var(--shadow);
-        }
-
-        .article-section h2 {
-            color: var(--primary);
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-        }
-
-        .article-content {
-            line-height: 1.8;
-        }
-
-        .article-content h3 {
-            color: var(--secondary);
-            margin: 20px 0 10px 0;
-        }
-
-        .article-content ul {
-            margin-left: 20px;
-            margin-bottom: 15px;
-        }
-
-        .article-content li {
-            margin-bottom: 8px;
-        }
-
-        @media (max-width: 900px) {
-            .font-gallery {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .font-gallery {
-                grid-template-columns: 1fr;
-            }
-            
-            .controls-section {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .right-controls {
-                width: 100%;
-                justify-content: space-between;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .top-fonts {
-                gap: 10px;
-            }
-            
-            .top-font-btn {
-                padding: 6px 12px;
-                font-size: 0.9rem;
-            }
-        }
-
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 15px 25px;
-            background: var(--gradient);
-            color: white;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            transform: translateX(150%);
-            transition: transform 0.3s ease;
-            z-index: 1000;
-        }
-
-        .notification.show {
-            transform: translateX(0);
-        }
-
-        .copy-options {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .copy-option-btn {
-            padding: 8px 15px;
-            background: #f0f0f0;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            cursor: pointer;
-            font-family: 'Hind Siliguri', sans-serif;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .copy-option-btn:hover {
-            background: #e0e0e0;
-        }
-    </style>
+  footer{margin-top:40px;padding-top:20px;border-top:2px solid #ccc;}
+  footer h2{margin-bottom:10px;color:#333;}
+  footer p{line-height:1.6;color:#555;}
+</style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>ফন্ট ফোল্ডার</h1>
-            <p class="tagline">১০০+ ইউনিক ফন্ট দিয়ে আর্টিকেল, নাম ও ক্রিয়েটিভ টেক্সট লিখুন</p>
-            
-            <div class="top-fonts">
-                <button class="top-font-btn" data-font="Hind Siliguri">হিন্দ সিলিগুড়ি</button>
-                <button class="top-font-btn" data-font="Poppins">পপিন্স</button>
-                <button class="top-font-btn" data-font="Kalpurush">কালপুরুষ</button>
-                <button class="top-font-btn" data-font="SolaimanLipi">সোলাইমান লিপি</button>
-                <button class="top-font-btn" data-font="SutonnyMJ">সুতনny এমজে</button>
-                <button class="top-font-btn" data-font="Nikosh">নিকোশ</button>
-                <button class="top-font-btn" data-font="Arial">এরিয়াল</button>
-                <button class="top-font-btn" data-font="Times New Roman">টাইমস নিউ রোমান</button>
-            </div>
-        </header>
-        
-        <div class="editor-section">
-            <textarea id="textEditor" placeholder="আপনার আর্টিকেল, নাম বা টেক্সট এখানে লিখুন...">ফন্ট ফোল্ডারে আপনাকে স্বাগতম! এখানে আপনি ১০০+ ইউনিক ফন্ট দিয়ে আপনার আর্টিকেল, নাম, স্ট্যাটাস ও যেকোনো টেক্সট লিখতে পারবেন।</textarea>
-            
-            <div class="controls-section">
-                <div class="left-controls">
-                    <input type="text" id="searchFont" placeholder="ফন্ট খুঁজুন...">
-                    <button id="boldToggle" class="control-btn">
-                        <span>B</span> বোল্ড
-                    </button>
-                    <input type="color" id="colorPicker" value="#6C63FF">
-                    <button id="italicToggle" class="control-btn">
-                        <span>I</span> ইটালিক
-                    </button>
-                </div>
-                
-                <div class="right-controls">
-                    <div class="size-control">
-                        <span>সাইজ:</span>
-                        <input type="range" id="fontSize" min="12" max="72" value="20">
-                        <span id="sizeValue">20px</span>
-                    </div>
-                    <button id="copyBtn">
-                        <span>📋</span> টেক্সট কপি করুন
-                    </button>
-                </div>
-            </div>
+<div class="container">
 
-            <div class="copy-options">
-                <button class="copy-option-btn" id="copyWithStyle">স্টাইল সহ কপি</button>
-                <button class="copy-option-btn" id="copyAsImage">ইমেজ হিসেবে কপি</button>
-                <button class="copy-option-btn" id="copyPlainText">প্লেইন টেক্সট কপি</button>
-            </div>
-        </div>
-        
-        <div class="font-gallery" id="fontGallery">
-            <!-- Fonts will be loaded here dynamically -->
-        </div>
-        
-        <div class="stats">
-            <div class="stat-item">
-                <div class="stat-value" id="totalFonts">0</div>
-                <div class="stat-label">মোট ফন্ট</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value" id="activeFont">হিন্দ সিলিগুড়ি</div>
-                <div class="stat-label">সক্রিয় ফন্ট</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value" id="textLength">78</div>
-                <div class="stat-label">টেক্সট লেন্থ</div>
-            </div>
-        </div>
+  <h1>Font Folder</h1>
 
-        <div class="article-section">
-            <h2>ফন্ট ফোল্ডার: আপনার লেখাকে করুন আরও আকর্ষণীয়</h2>
-            <div class="article-content">
-                <p>ফন্ট ফোল্ডার একটি সম্পূর্ণ বিনামূল্যের ওয়েব টুল যেখানে আপনি ১০০+ ইউনিক ফন্ট ব্যবহার করে আপনার লেখাকে আরও আকর্ষণীয় এবং পেশাদার করতে পারবেন।</p>
-                
-                <h3>কেন ফন্ট ফোল্ডার ব্যবহার করবেন?</h3>
-                <ul>
-                    <li><strong>আর্টিকেল লেখার জন্য পারফেক্ট:</strong> ব্লগ, নিবন্ধ, বা যেকোনো কন্টেন্ট লেখার জন্য উপযুক্ত ফন্ট</li>
-                    <li><strong>নাম লেখার জন্য বিশেষ ফন্ট:</strong> আপনার নাম, প্রতিষ্ঠানের নাম বা প্রোডাক্ট নামের জন্য ইউনিক ফন্ট</li>
-                    <li><strong>সামাজিক মিডিয়া পোস্ট:</strong> ফেসবুক, ইনস্টাগ্রাম, টুইটারের জন্য আকর্ষণীয় টেক্সট</li>
-                    <li><strong>ক্রিয়েটিভ প্রজেক্ট:</strong> ডিজাইন, গ্রাফিক্স এবং ক্রিয়েটিভ কাজের জন্য বিশেষ ফন্ট</li>
-                </ul>
-                
-                <h3>কিভাবে ব্যবহার করবেন?</h3>
-                <ol>
-                    <li>উপরের টেক্সট বক্সে আপনার কন্টেন্ট লিখুন</li>
-                    <li>নিচ থেকে আপনার পছন্দের ফন্ট সিলেক্ট করুন</li>
-                    <li>বোল্ড, ইটালিক, কালার এবং সাইজ পরিবর্তন করুন</li>
-                    <li>কপি বাটনে ক্লিক করে আপনার স্টাইল করা টেক্সট কপি করুন</li>
-                    <li>যেখানে খুশি পেস্ট করুন!</li>
-                </ol>
-                
-                <h3>সেরা ১০ ফন্টের ব্যবহার:</h3>
-                <ul>
-                    <li><strong>হিন্দ সিলিগুড়ি:</strong> বাংলা আর্টিকেল ও ব্লগ লেখার জন্য আদর্শ</li>
-                    <li><strong>পপিন্স:</strong> মডার্ন ও পেশাদার ডিজাইনের জন্য</li>
-                    <li><strong>কালপুরুষ:</strong> বাংলা বই ও ম্যাগাজিনের জন্য ক্লাসিক ফন্ট</li>
-                    <li><strong>সোলাইমান লিপি:</strong> আনুষ্ঠানিক লেখার জন্য পারফেক্ট</li>
-                    <li><strong>এরিয়াল:</strong> আন্তর্জাতিক স্ট্যান্ডার্ড ফন্ট</li>
-                </ul>
-                
-                <p>ফন্ট ফোল্ডার প্রতিদিন হাজারো ব্যবহারকারী তাদের লেখাকে আরও সুন্দর এবং কার্যকরী করতে ব্যবহার করছেন। আজই আপনার লেখাকে নতুন রূপ দিন!</p>
-            </div>
-        </div>
-    </div>
-    
-    <div class="notification" id="notification">
-        টেক্সট কপি করা হয়েছে!
-    </div>
+  <!-- Text Editor -->
+  <textarea id="editor" placeholder="Write your name, article, or stylish text here..."></textarea>
 
-    <script>
-        // Font list with 100+ unique fonts
-        const fonts = [
-            'Hind Siliguri', 'Poppins', 'Kalpurush', 'SolaimanLipi', 'SutonnyMJ',
-            'Nikosh', 'Arial', 'Times New Roman', 'Helvetica', 'Georgia',
-            'Verdana', 'Tahoma', 'Trebuchet MS', 'Courier New', 'Brush Script MT',
-            'Comic Sans MS', 'Impact', 'Lucida Console', 'Palatino', 'Garamond',
-            'Bookman', 'Avant Garde', 'Century Gothic', 'Franklin Gothic', 'Candara',
-            'Corbel', 'Constantia', 'Cambria', 'Cascadia Code', 'Segoe UI',
-            'Futura', 'Rockwell', 'Baskerville', 'Didot', 'Bodoni MT',
-            'Copperplate', 'Papyrus', 'Lucida Handwriting', 'Kristen ITC',
-            'Jokerman', 'Haettenschweiler', 'Ravie', 'Algerian', 'Broadway',
-            'Roboto', 'Open Sans', 'Lato', 'Montserrat', 'Raleway',
-            'Oswald', 'Source Sans Pro', 'Roboto Condensed', 'Roboto Slab',
-            'Merriweather', 'Playfair Display', 'Ubuntu', 'Noto Sans',
-            'PT Sans', 'Nunito', 'Rubik', 'Quicksand', 'Muli',
-            'Work Sans', 'Fira Sans', 'Cabin', 'Dosis', 'Abel',
-            'Josefin Sans', 'Anton', 'Archivo', 'Arimo', 'Barlow',
-            'Cairo', 'Crimson Text', 'Exo 2', 'Fjalla One', 'Inconsolata',
-            'Indie Flower', 'Karla', 'Libre Baskerville', 'Lobster',
-            'Lora', 'Manrope', 'Mukta', 'Nanum Gothic', 'Noto Serif',
-            'Nunito Sans', 'Orbitron', 'Oxygen', 'Pacifico', 'Prompt',
-            'PT Serif', 'Rajdhani', 'Righteous', 'Roboto Mono', 'Saira',
-            'Shadows Into Light', 'Signika', 'Source Code Pro', 'Space Mono',
-            'Titillium Web', 'Varela Round', 'Yanone Kaffeesatz', 'Zilla Slab'
-        ];
+  <!-- Controls -->
+  <div class="controls">
+    <label><input type="checkbox" id="bold"> Bold</label>
+    <label>Color: <input type="color" id="color" value="#000000"></label>
+    <button class="copy-btn" id="copyBtn">Copy Text</button>
+  </div>
 
-        // DOM Elements
-        const textEditor = document.getElementById('textEditor');
-        const fontGallery = document.getElementById('fontGallery');
-        const searchFont = document.getElementById('searchFont');
-        const boldToggle = document.getElementById('boldToggle');
-        const italicToggle = document.getElementById('italicToggle');
-        const colorPicker = document.getElementById('colorPicker');
-        const fontSize = document.getElementById('fontSize');
-        const sizeValue = document.getElementById('sizeValue');
-        const copyBtn = document.getElementById('copyBtn');
-        const copyWithStyle = document.getElementById('copyWithStyle');
-        const copyAsImage = document.getElementById('copyAsImage');
-        const copyPlainText = document.getElementById('copyPlainText');
-        const notification = document.getElementById('notification');
-        const totalFonts = document.getElementById('totalFonts');
-        const activeFont = document.getElementById('activeFont');
-        const textLength = document.getElementById('textLength');
-        const topFontBtns = document.querySelectorAll('.top-font-btn');
+  <!-- Search -->
+  <div class="search-box">
+    <input type="text" id="search" placeholder="Search font...">
+  </div>
 
-        let selectedFont = 'Hind Siliguri';
+  <!-- Top Fonts -->
+  <div class="section-title">🔥 Top 12 Fonts</div>
+  <div class="fonts-grid" id="topFonts"></div>
 
-        // Initialize font gallery
-        function renderFonts(fontList) {
-            fontGallery.innerHTML = '';
-            
-            fontList.forEach(font => {
-                const fontCard = document.createElement('div');
-                fontCard.className = 'font-card';
-                fontCard.innerHTML = `
-                    <div class="font-preview" style="font-family: '${font}'">ফন্ট ফোল্ডার</div>
-                    <div class="font-name">${font}</div>
-                `;
-                
-                fontCard.addEventListener('click', () => {
-                    selectFont(font, fontCard);
-                });
-                
-                fontGallery.appendChild(fontCard);
-            });
-            
-            // Select first font by default
-            if (fontGallery.firstChild) {
-                selectFont(fontList[0], fontGallery.firstChild);
-            }
-            
-            // Update stats
-            totalFonts.textContent = fontList.length;
-        }
+  <!-- More Fonts -->
+  <div class="section-title">💎 More Fonts</div>
+  <div class="fonts-grid" id="fontsGrid"></div>
 
-        // Select font function
-        function selectFont(font, element) {
-            // Remove active class from all cards
-            document.querySelectorAll('.font-card').forEach(card => {
-                card.classList.remove('active');
-            });
-            
-            // Add active class to clicked card
-            element.classList.add('active');
-            
-            // Apply font to text editor
-            selectedFont = font;
-            textEditor.style.fontFamily = `'${font}', sans-serif`;
-            activeFont.textContent = font;
-        }
+  <!-- Footer -->
+  <footer>
+    <h2>About Font Folder</h2>
+    <p>
+      <strong>Font Folder</strong> is your one-stop font generator where creativity meets simplicity. Choose from 100+ stylish fonts, preview them instantly, and copy your cool text with just one click. Perfect for articles, social media names, and design work.  
+      <br><br>
+      <em>SEO Keywords:</em> Font Generator, Cool Text, Stylish Fonts, Free Fonts, Name Design, Font Folder, Text Art.
+    </p>
+  </footer>
 
-        // Top font buttons
-        topFontBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const font = btn.getAttribute('data-font');
-                const fontCard = Array.from(document.querySelectorAll('.font-card'))
-                    .find(card => card.querySelector('.font-name').textContent === font);
-                
-                if (fontCard) {
-                    selectFont(font, fontCard);
-                    fontCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            });
-        });
+</div>
 
-        // Search functionality
-        searchFont.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            const filteredFonts = fonts.filter(font => 
-                font.toLowerCase().includes(searchTerm)
-            );
-            renderFonts(filteredFonts);
-        });
+<script>
+const topFontsList = [
+  'Poppins','Lobster','Pacifico','Bebas Neue','Dancing Script','Oswald','Raleway','Playfair Display','Abril Fatface','Great Vibes','Rubik','Teko'
+];
+const moreFontsList = [
+  'Montserrat','Roboto','Merriweather','Anton','Comfortaa','Caveat','Josefin Sans','Quicksand','Kalam','Arvo','Amatic SC','Shadows Into Light',
+  'Satisfy','Courgette','Inconsolata','Ubuntu','Kanit','Exo','Prompt','Titillium Web'
+];
 
-        // Bold toggle
-        boldToggle.addEventListener('click', () => {
-            boldToggle.classList.toggle('active');
-            textEditor.style.fontWeight = textEditor.style.fontWeight === 'bold' ? 'normal' : 'bold';
-        });
+const topFontsContainer = document.getElementById('topFonts');
+const fontsContainer = document.getElementById('fontsGrid');
+const editor = document.getElementById('editor');
+const boldCheck = document.getElementById('bold');
+const colorInput = document.getElementById('color');
+const searchInput = document.getElementById('search');
+const copyBtn = document.getElementById('copyBtn');
 
-        // Italic toggle
-        italicToggle.addEventListener('click', () => {
-            italicToggle.classList.toggle('active');
-            textEditor.style.fontStyle = textEditor.style.fontStyle === 'italic' ? 'normal' : 'italic';
-        });
+// Load Google Fonts dynamically
+const loadGoogleFonts = (fonts) => {
+  const link = document.createElement('link');
+  link.href = 'https://fonts.googleapis.com/css2?' + fonts.map(f => 'family=' + f.replace(/ /g, '+')).join('&') + '&display=swap';
+  link.rel = 'stylesheet';
+  document.head.appendChild(link);
+};
+loadGoogleFonts([...topFontsList, ...moreFontsList]);
 
-        // Color picker
-        colorPicker.addEventListener('input', (e) => {
-            textEditor.style.color = e.target.value;
-        });
+function createFontGrid(container, list) {
+  container.innerHTML = '';
+  list.forEach(font => {
+    const div = document.createElement('div');
+    div.classList.add('font-item');
+    div.style.fontFamily = font;
+    div.textContent = 'BUSTAMI';
+    div.title = font;
+    div.addEventListener('click', () => {
+      editor.style.fontFamily = font;
+    });
+    container.appendChild(div);
+  });
+}
 
-        // Font size
-        fontSize.addEventListener('input', (e) => {
-            const size = e.target.value;
-            textEditor.style.fontSize = `${size}px`;
-            sizeValue.textContent = `${size}px`;
-        });
+createFontGrid(topFontsContainer, topFontsList);
+createFontGrid(fontsContainer, moreFontsList);
 
-        // Text length counter
-        textEditor.addEventListener('input', (e) => {
-            textLength.textContent = e.target.value.length;
-        });
+// Search function
+searchInput.addEventListener('input', () => {
+  const query = searchInput.value.toLowerCase();
+  const allItems = document.querySelectorAll('.font-item');
+  allItems.forEach(item => {
+    const match = item.title.toLowerCase().includes(query);
+    item.style.display = match ? 'block' : 'none';
+  });
+});
 
-        // Copy functions
-        async function copyToClipboard(text) {
-            try {
-                await navigator.clipboard.writeText(text);
-                showNotification('টেক্সট কপি করা হয়েছে!');
-                return true;
-            } catch (err) {
-                showNotification('কপি করতে সমস্যা হয়েছে!');
-                console.error('Copy failed:', err);
-                return false;
-            }
-        }
+// Bold
+boldCheck.addEventListener('change', () => {
+  editor.style.fontWeight = boldCheck.checked ? 'bold' : 'normal';
+});
 
-        // Copy with style (HTML)
-        copyWithStyle.addEventListener('click', async () => {
-            const styledText = `<span style="font-family: '${selectedFont}'; font-size: ${textEditor.style.fontSize}; color: ${textEditor.style.color}; font-weight: ${textEditor.style.fontWeight}; font-style: ${textEditor.style.fontStyle}">${textEditor.value}</span>`;
-            await copyToClipboard(styledText);
-        });
+// Color
+colorInput.addEventListener('input', () => {
+  editor.style.color = colorInput.value;
+});
 
-        // Copy as plain text
-        copyPlainText.addEventListener('click', async () => {
-            await copyToClipboard(textEditor.value);
-        });
+// Copy Text (with font)
+copyBtn.addEventListener('click', () => {
+  const tempDiv = document.createElement('div');
+  tempDiv.style.fontFamily = editor.style.fontFamily;
+  tempDiv.style.fontWeight = editor.style.fontWeight;
+  tempDiv.style.color = editor.style.color;
+  tempDiv.textContent = editor.value;
+  document.body.appendChild(tempDiv);
 
-        // Copy as image (simulated)
-        copyAsImage.addEventListener('click', async () => {
-            showNotification('এই ফিচারটি শীঘ্রই আসছে!');
-        });
+  const range = document.createRange();
+  range.selectNode(tempDiv);
+  const selection = window.getSelection();
+  selection.removeAllRanges();
+  selection.addRange(range);
+  document.execCommand('copy');
+  selection.removeAllRanges();
+  document.body.removeChild(tempDiv);
 
-        // Main copy button
-        copyBtn.addEventListener('click', async () => {
-            await copyToClipboard(textEditor.value);
-        });
-
-        // Notification function
-        function showNotification(message) {
-            notification.textContent = message;
-            notification.classList.add('show');
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 3000);
-        }
-
-        // Initial render
-        renderFonts(fonts);
-        textEditor.style.fontFamily = "'Hind Siliguri', sans-serif";
-        textEditor.style.color = colorPicker.value;
-        textEditor.style.fontSize = `${fontSize.value}px`;
-        activeFont.textContent = selectedFont;
-        textLength.textContent = textEditor.value.length;
-    </script>
+  copyBtn.textContent = "Copied!";
+  setTimeout(() => copyBtn.textContent = "Copy Text", 2000);
+});
+</script>
 </body>
 </html>
