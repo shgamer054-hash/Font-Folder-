@@ -112,42 +112,23 @@ input {
 
 <div class="article">
   <h2>About Font Folder Pro</h2>
-  <p><strong>Font Folder Pro</strong> is an online Unicode-based text styling tool that lets users instantly convert any text into 20+ unique and stylish fonts. You can preview your text live and copy your favorite font with a single click.</p>
-  <p>This tool is perfect for social media posts, usernames, bios, or any creative text design. Every font is fully Unicode compatible, so it works on all platforms like Messenger, Instagram, Facebook, and Discord.</p>
-  <p><strong>Features:</strong></p>
+  <p><strong>Font Folder Pro</strong> is a Unicode-based text styling tool that lets you transform your words into 20+ unique stylish fonts instantly. Perfect for social media captions, bios, or usernames.</p>
+  <p>All fonts are fully Unicode supported — so they look perfect on Facebook, Instagram, Telegram, Discord, and more. Just type your text, see the magic below, and click to copy your favorite style.</p>
   <ul style="margin-left:20px; color:#aaa; line-height:1.7;">
     <li>Live text preview</li>
     <li>20+ stylish Unicode fonts</li>
     <li>One-click copy</li>
-    <li>Responsive, mobile-friendly design</li>
-    <li>Modern dark theme UI</li>
+    <li>Works everywhere</li>
   </ul>
-  <p><strong>How to Use:</strong> Type your text in the box above, select a font style, and click it to copy instantly. Then paste it anywhere you like.</p>
-  <p><em>Created for everyone who loves beautiful text!</em></p>
 </div>
 
 <script>
-const fonts = [
-  "ＢＵＳＴＡＭＩ",
-  "🅱🆄🆂🆃🅰🅼🅸",
-  "𝓑𝓤𝓢𝓣𝓐𝓜𝓘",
-  "𝔅𝔘𝔖𝔗𝔄𝔐𝔌",
-  "ʙᴜsᴛᴀᴍɪ",
-  "ʙⓤsⓣᗩᗰɪ",
-  "🅑🅤🅢🅣🅐🅜🅘",
-  "𝗕𝗨𝗦𝗧𝗔𝗠𝗜",
-  "𝑩𝑼𝑺𝑻𝑨𝑴𝑰",
-  "𝘉𝘜𝘚𝘛𝘈𝘔𝘐",
-  "𝙱𝚄𝚂𝚃𝙰𝙼𝙸",
-  "🄱🅄🅂🅃🄰🄼🄸",
-  "🅑🅤🅢🅣🅐🅜🅘",
-  "Ｂｕｓｔａｍｉ",
-  "Ⓑⓤⓢⓣⓐⓜⓘ",
-  "Ｂ🆄ＳＴ🅰🅼Ｉ",
-  "🅱ust🅰m🅸",
-  "𝓑𝓾𝓼𝓽𝓪𝓶𝓲",
-  "ＢＵＳＴＡＭＩ⚡",
-  "🅑🅤🅢🅣🅐🅜🅘🔥"
+const baseFonts = [
+  "ＢＵＳＴＡＭＩ","🅱🆄🆂🆃🅰🅼🅸","𝓑𝓤𝓢𝓣𝓐𝓜𝓘","𝔅𝔘𝔖𝔗𝔄𝔐𝔌",
+  "ʙᴜsᴛᴀᴍɪ","ʙⓤsⓣᗩᗰɪ","🅑🅤🅢🅣🅐🅜🅘","𝗕𝗨𝗦𝗧𝗔𝗠𝗜",
+  "𝑩𝑼𝑺𝑻𝑨𝑴𝑰","𝘉𝘜𝘚𝘛𝘈𝘔𝘐","𝙱𝚄𝚂𝚃𝙰𝙼𝙸","🄱🅄🅂🅃🄰🄼🄸",
+  "🅑🅤🅢🅣🅐🅜🅘","Ｂｕｓｔａｍｉ","Ⓑⓤⓢⓣⓐⓜⓘ","Ｂ🆄ＳＴ🅰🅼Ｉ",
+  "🅱ust🅰m🅸","𝓑𝓾𝓼𝓽𝓪𝓶𝓲","ＢＵＳＴＡＭＩ⚡","🅑🅤🅢🅣🅐🅜🅘🔥"
 ];
 
 const grid = document.getElementById("fontGrid");
@@ -160,17 +141,19 @@ function renderFonts() {
   preview.innerText = text;
   grid.innerHTML = "";
 
-  fonts.forEach(f => {
+  baseFonts.forEach(style => {
+    const customText = style.replace(/BUSTAMI/gi, text);
     const div = document.createElement("div");
     div.className = "font-card";
-    div.innerText = f.replace(/BUSTAMI/gi, text);
-    div.onclick = () => copyFont(div.innerText);
+    div.textContent = customText;
+    div.onclick = () => copyFont(customText);
     grid.appendChild(div);
   });
 }
 
 function copyFont(text) {
-  navigator.clipboard.writeText(text).then(() => showToast());
+  navigator.clipboard.writeText(text)
+    .then(() => showToast());
 }
 
 function showToast() {
@@ -180,5 +163,6 @@ function showToast() {
 
 renderFonts();
 </script>
+
 </body>
 </html>
