@@ -89,10 +89,10 @@
 </head>
 <body>
   <h1>FONT FOLDER PRO</h1>
-  <p>Type text below and click on a font to copy it in unique style</p>
+  <p>Type your text below and click a font to copy your styled text</p>
 
   <div class="input-area">
-    <input type="text" id="userInput" placeholder="Type your text here..." oninput="updatePreview()" />
+    <input type="text" id="userInput" placeholder="Type your text here..." oninput="renderFonts()" />
   </div>
 
   <div class="preview" id="previewText">BUSTAMI</div>
@@ -130,26 +130,20 @@
     const toast = document.getElementById("toast");
     const input = document.getElementById("userInput");
 
-    // Update preview
-    function updatePreview() {
-      preview.innerText = input.value || "BUSTAMI";
-      renderFonts();
-    }
-
-    // Render fonts dynamically
     function renderFonts() {
       const text = input.value || "BUSTAMI";
+      preview.innerText = text;
       grid.innerHTML = "";
       fonts.forEach((f) => {
+        const customText = f.replace(/BUSTAMI/gi, text);
         const div = document.createElement("div");
         div.className = "font-card";
-        div.innerText = f.replace(/BUSTAMI/gi, text);
-        div.onclick = () => copyFont(div.innerText);
+        div.innerText = customText;
+        div.onclick = () => copyFont(customText);
         grid.appendChild(div);
       });
     }
 
-    // Copy function
     function copyFont(text) {
       navigator.clipboard.writeText(text);
       showToast();
