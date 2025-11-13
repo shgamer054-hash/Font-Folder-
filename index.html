@@ -1,102 +1,200 @@
-<!-- FONT GRID (20 cards with “BUSTAMI”) -->
-<div class="font-grid" id="fontGrid">
-  <div class="font-card" data-style="bold" data-name="Bold">
-    <div class="font-preview" style="background:#fff;color:#000;">BUSTAMI</div>
-    <div class="font-name">Bold</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Font Folder Pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Lora&family=Roboto&family=Playfair+Display&family=Montserrat&family=Raleway&family=Oswald&family=Bebas+Neue&family=Satisfy&family=Dancing+Script&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #fefefe, #e0f7fa);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #ff4081;
+      font-size: 2.5em;
+    }
+    p {
+      color: #555;
+    }
+    .search-box {
+      text-align: center;
+      margin: 20px 0;
+      position: relative;
+    }
+    .search-box input {
+      padding: 12px 45px 12px 20px;
+      border-radius: 30px;
+      border: 1px solid #ddd;
+      width: 300px;
+      font-size: 16px;
+      outline: none;
+    }
+    .search-box button {
+      position: absolute;
+      right: calc(50% - 150px);
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #03a9f4;
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    .editor {
+      text-align: center;
+      margin: 30px;
+    }
+    .editor input {
+      width: 80%;
+      max-width: 600px;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 18px;
+    }
+    .buttons {
+      margin-top: 15px;
+    }
+    .buttons button {
+      background-color: #ffca28;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      margin: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .buttons button:hover {
+      background-color: #ffb300;
+    }
+    .font-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .font-card {
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    .font-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+    }
+    .font-name {
+      color: #0288d1;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .article {
+      max-width: 800px;
+      margin: 50px auto;
+      background-color: #ffffffcc;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .article h2 {
+      color: #03a9f4;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Font Folder Pro</h1>
+    <p>Explore 100+ stylish fonts and copy text for Messenger, TikTok, or Instagram!</p>
+  </header>
+
+  <div class="editor">
+    <input type="text" id="userText" value="BUSTAMI" placeholder="Type your text here">
+    <div class="buttons">
+      <button id="copyStyled">Copy Styled</button>
+      <button id="copyPlain">Copy Plain</button>
+    </div>
   </div>
 
-  <div class="font-card" data-style="fullwidth" data-name="Fullwidth">
-    <div class="font-preview" style="background:#fff;color:#000;">BUSTAMI</div>
-    <div class="font-name">Fullwidth</div>
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="">
+    <button id="searchBtn">🔍</button>
   </div>
 
-  <div class="font-card" data-style="circled" data-name="Circled">
-    <div class="font-preview" style="background:#fff;color:#000;">BUSTAMI</div>
-    <div class="font-name">Circled</div>
+  <div class="font-grid" id="fontGrid"></div>
+
+  <div class="article">
+    <h2>How Fonts Shape Your Brand</h2>
+    <p>Typography defines the personality of your brand. Choosing the right font can express creativity, trust, and style in a single glance. Use this Font Folder Pro tool to explore, preview, and copy fonts that make your words stand out on any platform.</p>
   </div>
 
-  <div class="font-card" data-style="fancy" data-name="Fancy">
-    <div class="font-preview" style="background:#fff;color:#000;">BUSTAMI</div>
-    <div class="font-name">Fancy</div>
-  </div>
+  <footer>© Font Folder — Built for font lovers</footer>
 
-  <div class="font-card" data-style="double" data-name="Double Struck">
-    <div class="font-preview" style="background:#fff;color:#000;">BUSTAMI</div>
-    <div class="font-name">Double Struck</div>
-  </div>
+  <script>
+    const fonts = [
+      { name: 'BUSTAMI', family: 'Poppins' },
+      { name: 'Lora', family: 'Lora' },
+      { name: 'Roboto', family: 'Roboto' },
+      { name: 'Playfair Display', family: 'Playfair Display' },
+      { name: 'Montserrat', family: 'Montserrat' },
+      { name: 'Raleway', family: 'Raleway' },
+      { name: 'Oswald', family: 'Oswald' },
+      { name: 'Bebas Neue', family: 'Bebas Neue' },
+      { name: 'Satisfy', family: 'Satisfy' },
+      { name: 'Dancing Script', family: 'Dancing Script' },
+    ];
 
-  <div class="font-card" data-style="script" data-name="Script">
-    <div class="font-preview" style="background:#fff;color:#000;">BUSTAMI</div>
-    <div class="font-name">Script</div>
-  </div>
+    const grid = document.getElementById('fontGrid');
+    const userText = document.getElementById('userText');
 
-  <div class="font-card" data-style="fraktur" data-name="Fraktur">
-    <div class="font-preview" style="background:#fff;color:#000;">BUSTAMI</div>
-    <div class="font-name">Fraktur</div>
-  </div>
+    function loadFonts() {
+      grid.innerHTML = '';
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      fonts.filter(f => f.name.toLowerCase().includes(query)).forEach(font => {
+        const card = document.createElement('div');
+        card.className = 'font-card';
+        card.style.fontFamily = font.family;
+        card.innerHTML = `<div class='preview'>BUSTAMI</div><div class='font-name'>${font.name}</div>`;
+        card.onclick = () => {
+          navigator.clipboard.writeText(userText.value).then(() => {
+            alert('Copied font style text!');
+          });
+        };
+        grid.appendChild(card);
+      });
+    }
 
-  <div class="font-card" data-style="sans" data-name="Sans Bold">
-    <div class="font-preview" style="background:#fff;color:#000;">BUSTAMI</div>
-    <div class="font-name">Sans Bold</div>
-  </div>
+    loadFonts();
+    document.getElementById('searchBtn').addEventListener('click', loadFonts);
+    document.getElementById('copyStyled').addEventListener('click', () => {
+      navigator.clipboard.writeText(userText.value);
+      alert('Styled text copied!');
+    });
+    document.getElementById('copyPlain').addEventListener('click', () => {
+      navigator.clipboard.writeText(userText.value);
+      alert('Plain text copied!');
+    });
+  </script>
 
-  <div class="font-card" data-style="typewriter" data-name="Typewriter">
-    <div class="font-preview" style="background:#fff;color:#000;">BUSTAMI</div>
-    <div class="font-name">Typewriter</div>
-  </div>
-
-  <div class="font-card" data-style="smallcaps" data-name="Small Caps">
-    <div class="font-preview" style="background:#fff;color:#000;">BUSTAMI</div>
-    <div class="font-name">Small Caps</div>
-  </div>
-
-  <div class="font-card" data-style="outlined" data-name="Outlined">
-    <div class="font-preview" style="background:#fff;color:#000;">BUSTAMI</div>
-    <div class="font-name">Outlined</div>
-  </div>
-
-  <div class="font-card" data-style="shadow" data-name="Shadow">
-    <div class="font-preview" style="background:#fff;color:#000;">BUSTAMI</div>
-    <div class="font-name">Shadow</div>
-  </div>
-
-  <div class="font-card" data-style="italic" data-name="Italic">
-    <div class="font-preview" style="background:#fff;color:#000;">BUSTAMI</div>
-    <div class="font-name">Italic</div>
-  </div>
-
-  <div class="font-card" data-style="serif" data-name="Serif Classic">
-    <div class="font-preview" style="background:#fff;color:#000;">BUSTAMI</div>
-    <div class="font-name">Serif Classic</div>
-  </div>
-
-  <div class="font-card" data-style="monospace" data-name="Monospace">
-    <div class="font-preview" style="background:#fff;color:#000;">BUSTAMI</div>
-    <div class="font-name">Monospace</div>
-  </div>
-
-  <div class="font-card" data-style="thin" data-name="Thin">
-    <div class="font-preview" style="background:#fff;color:#000;">BUSTAMI</div>
-    <div class="font-name">Thin</div>
-  </div>
-
-  <div class="font-card" data-style="handwritten" data-name="Handwritten">
-    <div class="font-preview" style="background:#fff;color:#000;">BUSTAMI</div>
-    <div class="font-name">Handwritten</div>
-  </div>
-
-  <div class="font-card" data-style="modern" data-name="Modern">
-    <div class="font-preview" style="background:#fff;color:#000;">BUSTAMI</div>
-    <div class="font-name">Modern</div>
-  </div>
-
-  <div class="font-card" data-style="signature" data-name="Signature">
-    <div class="font-preview" style="background:#fff;color:#000;">BUSTAMI</div>
-    <div class="font-name">Signature</div>
-  </div>
-
-  <div class="font-card" data-style="comic" data-name="Comic">
-    <div class="font-preview" style="background:#fff;color:#000;">BUSTAMI</div>
-    <div class="font-name">Comic</div>
-  </div>
-</div>
+</body>
+</html>
