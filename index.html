@@ -86,6 +86,23 @@
       font-weight: bold;
       min-width: 180px;
     }
+    .article {
+      max-width: 800px;
+      margin: 50px auto 0;
+      text-align: left;
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 12px;
+      line-height: 1.6;
+    }
+    .article h2 {
+      color: #00ffcc;
+      margin-bottom: 10px;
+    }
+    .article p {
+      color: #ccc;
+      font-size: 15px;
+    }
   </style>
 </head>
 <body>
@@ -101,6 +118,30 @@
   <div class="font-grid" id="fontGrid"></div>
 
   <div id="toast" class="toast">Copied!</div>
+
+  <div class="article">
+    <h2>About Font Folder Pro</h2>
+    <p>
+      <strong>Font Folder Pro</strong> is a powerful Unicode-based text styling tool that allows users 
+      to instantly convert plain text into over 20 unique and stylish font designs. 
+      With a clean and modern interface, users can simply type any word or phrase, 
+      preview it in multiple fonts, and copy their favorite version with a single click.
+    </p>
+    <p>
+      This tool is perfect for social media captions, usernames, bios, or any creative text design. 
+      Each style is Unicode-based, meaning the generated fonts are compatible with 
+      all major platforms including Messenger, Instagram, Facebook, Discord, and more.
+    </p>
+    <p>
+      The simplicity and speed of <strong>Font Folder Pro</strong> make it ideal for creators, 
+      designers, and anyone who wants to stand out with unique typography. 
+      Whether you’re customizing a name, a quote, or a brand title — Font Folder Pro 
+      gives you instant access to stylish Unicode fonts without the need for downloads or apps.
+    </p>
+    <p>
+      <em>Created with passion — for everyone who loves beautiful text!</em>
+    </p>
+  </div>
 
   <script>
     const fonts = [
@@ -139,11 +180,8 @@
       fonts.forEach((style) => {
         const div = document.createElement("div");
         div.className = "font-card";
-
-        // Replace each letter individually
         const mapped = style.replace(/BUSTAMI/gi, text);
         div.innerText = mapped;
-
         div.onclick = () => copyFont(mapped);
         grid.appendChild(div);
       });
