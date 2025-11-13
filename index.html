@@ -1,378 +1,166 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Font Folder — Unicode Edition</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg1:#fffdf9; --bg2:#f0f8ff;
-    --card:#ffffff;
-    --accent:#ff6b6b;
-    --muted:#6b7280;
-    --toast-bg: rgba(16,24,40,0.92);
-  }
-  *{box-sizing:border-box}
-  body{
-    margin:0; font-family:Poppins,system-ui,Arial,sans-serif;
-    background: linear-gradient(180deg,var(--bg2),var(--bg1));
-    color:#0f172a; padding:20px;
-  }
-  header{ text-align:center; margin-bottom:12px }
-  h1{ margin:0; color:var(--accent); font-size:30px; letter-spacing:0.4px }
-  p.lead{ color:var(--muted); margin-top:8px }
-
-  .editor{ max-width:1000px; margin:18px auto; display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:center }
-  .editor input{
-    flex:1; min-width:220px; max-width:720px;
-    padding:12px 14px; border-radius:12px; border:1px solid rgba(15,23,42,0.06); font-size:16px;
-    box-shadow:0 8px 20px rgba(11,22,65,0.04)
-  }
-  .actions{ display:flex; gap:10px; align-items:center; }
-  .btn{
-    padding:10px 14px; border-radius:10px; border:none; font-weight:700; cursor:pointer;
-    background: linear-gradient(180deg,#ffd36b,#f1c04a);
-    box-shadow:0 8px 22px rgba(250,174,56,0.12);
-  }
-  .btn.secondary{ background: linear-gradient(180deg,#e7eefc,#d3ecff); color:#08324a }
-
-  .search{ max-width:540px; margin:12px auto 18px; position:relative }
-  .search input{
-    width:100%; padding:12px 52px 12px 14px; border-radius:26px; border:1px solid rgba(15,23,42,0.06); font-size:15px;
-    box-shadow:0 10px 24px rgba(15,23,42,0.03)
-  }
-  .search button{
-    position:absolute; right:8px; top:50%; transform:translateY(-50%); width:44px; height:44px; border-radius:50%;
-    border:none; background:#4fbbe9; color:#fff; font-size:18px; cursor:pointer; box-shadow:0 8px 20px rgba(77,157,184,0.18)
-  }
-
-  .grid{ max-width:1100px; margin:18px auto; display:grid; grid-template-columns:repeat(3,1fr); gap:18px; align-items:start }
-  .card{
-    background:var(--card); padding:22px; border-radius:14px; text-align:center; cursor:pointer;
-    box-shadow: 0 12px 30px rgba(12,20,40,0.06); transition:transform .16s, box-shadow .16s, border .16s;
-    border:2px solid transparent;
-  }
-  .card:hover{ transform:translateY(-6px); box-shadow:0 18px 44px rgba(12,20,40,0.12) }
-  .card.selected{ border-color: rgba(99,102,241,0.14); box-shadow:0 20px 50px rgba(99,102,241,0.06) }
-
-  .preview{ font-size:28px; margin-bottom:10px; color:var(--accent); min-height:56px; display:flex; align-items:center; justify-content:center; word-break:break-word }
-  .card .name{ color:#0ea5a4; font-weight:700 }
-
-  .article{ max-width:1100px; margin:26px auto; background:var(--card); padding:18px; border-radius:12px; box-shadow:0 10px 24px rgba(12,20,40,0.04) }
-  .article h2{ color:#0ea5a4; margin-top:0 }
-  footer{ text-align:center; color:var(--muted); margin-top:18px }
-
-  .toast{
-    position:fixed; left:50%; transform:translateX(-50%); bottom:28px; background:var(--toast-bg); color:#fff;
-    padding:10px 16px; border-radius:999px; box-shadow:0 10px 30px rgba(2,6,23,0.5); opacity:0; pointer-events:none; transition:all .25s;
-  }
-  .toast.show{ opacity:1; bottom:44px; pointer-events:auto }
-
-  @media (max-width:900px){ .grid{ grid-template-columns:repeat(2,1fr) } }
-  @media (max-width:520px){ .grid{ grid-template-columns:1fr } .editor input{width:100%} .search{ width:92% } }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Font Folder Pro - Unicode Edition</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #111, #222);
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
+    p {
+      color: #ccc;
+      font-size: 14px;
+    }
+    .input-area {
+      margin: 20px auto;
+      max-width: 400px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+    }
+    .font-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 15px;
+      margin-top: 30px;
+    }
+    .font-card {
+      background: #fff;
+      color: #000;
+      border-radius: 12px;
+      padding: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 22px;
+      font-weight: bold;
+    }
+    .font-card:hover {
+      background: #000;
+      color: #fff;
+      transform: scale(1.05);
+    }
+    .toast {
+      position: fixed;
+      bottom: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #00ff99;
+      color: #000;
+      padding: 10px 25px;
+      border-radius: 25px;
+      font-weight: bold;
+      opacity: 0;
+      transition: all 0.5s ease;
+    }
+    .toast.show {
+      bottom: 30px;
+      opacity: 1;
+    }
+    .preview {
+      background: #fff;
+      color: #000;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      display: inline-block;
+      font-size: 24px;
+      font-weight: bold;
+      min-width: 180px;
+    }
+  </style>
 </head>
 <body>
-<header>
-  <h1>Font Folder — Unicode Edition</h1>
-  <p class="lead">Click any card to copy the text in that unique Unicode style. Each card displays <strong>BUSTAMI</strong>.</p>
-</header>
+  <h1>FONT FOLDER PRO</h1>
+  <p>Type text below and click on a font to copy it in unique style</p>
 
-<div class="editor">
-  <input id="userInput" placeholder="Type text (will be copied in selected style). Leave empty to use BUSTAMI." />
-  <div class="actions">
-    <button id="copyStyled" class="btn">Copy Styled</button>
-    <button id="copyPlain" class="btn secondary">Copy Plain</button>
+  <div class="input-area">
+    <input type="text" id="userInput" placeholder="Type your text here..." oninput="updatePreview()" />
   </div>
-</div>
 
-<div class="search">
-  <input id="searchInput" placeholder="" />
-  <button id="searchBtn" title="Search">🔍</button>
-</div>
+  <div class="preview" id="previewText">BUSTAMI</div>
 
-<div class="grid" id="grid"></div>
+  <div class="font-grid" id="fontGrid"></div>
 
-<div class="article">
-  <h2>About — Unicode Font Copy</h2>
-  <p>This tool converts typed text into Unicode-styled characters so the style remains when you paste into Messenger, Instagram, or other apps. Automatic conversion is off — click a card to choose a style, then copy.</p>
-</div>
+  <div id="toast" class="toast">Copied!</div>
 
-<footer>© Font Folder — Unicode Edition</footer>
+  <script>
+    const fonts = [
+      "ＢＵＳＴＡＭＩ",
+      "🅱🆄🆂🆃🅰🅼🅸",
+      "𝓑𝓤𝓢𝓣𝓐𝓜𝓘",
+      "𝔅𝔘𝔖𝔗𝔄𝔐𝔌",
+      "ʙᴜsᴛᴀᴍɪ",
+      "ʙⓤsⓣᗩᗰɪ",
+      "🅑🅤🅢🅣🅐🅜🅘",
+      "𝗕𝗨𝗦𝗧𝗔𝗠𝗜",
+      "𝑩𝑼𝑺𝑻𝑨𝑴𝑰",
+      "𝘉𝘜𝘚𝘛𝘈𝘔𝘐",
+      "𝙱𝚄𝚂𝚃𝙰𝙼𝙸",
+      "🄱🅄🅂🅃🄰🄼🄸",
+      "🅑🅤🅢🅣🅐🅜🅘",
+      "Ｂｕｓｔａｍｉ",
+      "Ⓑⓤⓢⓣⓐⓜⓘ",
+      "Ｂ🆄ＳＴ🅰🅼Ｉ",
+      "🅱ust🅰m🅸",
+      "𝓑𝓾𝓼𝓽𝓪𝓶𝓲",
+      "ＢＵＳＴＡＭＩ⚡",
+      "🅑🅤🅢🅣🅐🅜🅘🔥"
+    ];
 
-<div id="toast" class="toast">Copied ✅</div>
+    const grid = document.getElementById("fontGrid");
+    const preview = document.getElementById("previewText");
+    const toast = document.getElementById("toast");
+    const input = document.getElementById("userInput");
 
-<script>
-/* ---------- Styles / font list ---------- */
-/* Each style has an id and display name. The preview always shows transformed 'BUSTAMI' */
-const STYLES = [
-  { id:'bold', name:'Bold' },
-  { id:'fullwidth', name:'Fullwidth' },
-  { id:'circled', name:'Circled' },
-  { id:'fancy', name:'Script (Fancy)' },
-  { id:'fraktur', name:'Fraktur (Gothic)' },
-  { id:'smallcaps', name:'Small Caps' },
-  { id:'superscript', name:'Superscript (Tiny)' },
-  { id:'doublestruck', name:'Double-Struck' },
-  { id:'bracketed', name:'Squared/Bracketed' },
-  { id:'mono', name:'Monospace-Like' },
-  { id:'stroked', name:'Stroked' },
-  { id:'slashed', name:'Slashed' }
-];
-
-/* ---------- Helper transform functions ---------- */
-/* If a mapped Unicode char does not exist we fall back to original */
-
-function mapBold(text){
-  let out = '';
-  for (let ch of text){
-    const cp = ch.codePointAt(0);
-    if (cp>=0x41 && cp<=0x5A) out += String.fromCodePoint(0x1D400 + (cp-0x41));
-    else if (cp>=0x61 && cp<=0x7A) out += String.fromCodePoint(0x1D41A + (cp-0x61));
-    else if (cp>=0x30 && cp<=0x39) out += String.fromCodePoint(0x1D7CE + (cp-0x30));
-    else out += ch;
-  }
-  return out;
-}
-
-function mapFullwidth(text){
-  let out = '';
-  for (let ch of text){
-    const code = ch.charCodeAt(0);
-    if (code>=33 && code<=126) out += String.fromCharCode(code + 0xFEE0);
-    else if (ch === ' ') out += ' ';
-    else out += ch;
-  }
-  return out;
-}
-
-function mapCircled(text){
-  let out = '';
-  for (let ch of text){
-    const cp = ch.codePointAt(0);
-    if (cp>=0x41 && cp<=0x5A) out += String.fromCodePoint(0x24B6 + (cp-0x41));
-    else if (cp>=0x61 && cp<=0x7A) out += String.fromCodePoint(0x24D0 + (cp-0x61));
-    else out += ch;
-  }
-  return out;
-}
-
-/* Fancy/script manual map (covers A-Z a-z) */
-const FANCY_MAP = {
-  'A':'𝒜','B':'𝓑','C':'𝒞','D':'𝒟','E':'ℰ','F':'𝓕','G':'𝒢','H':'ℋ','I':'ℐ','J':'𝒥','K':'𝒦','L':'ℒ','M':'𝓜','N':'𝓝','O':'𝒪','P':'𝒫','Q':'𝒬','R':'ℛ','S':'𝒮','T':'𝒯','U':'𝒰','V':'𝒱','W':'𝒲','X':'𝒳','Y':'𝒴','Z':'𝒵',
-  'a':'𝒶','b':'𝒷','c':'𝒸','d':'𝒹','e':'ℯ','f':'𝒻','g':'ℊ','h':'𝒽','i':'𝒾','j':'𝒿','k':'𝓀','l':'𝓁','m':'𝓂','n':'𝓃','o':'ℴ','p':'𝓅','q':'𝓆','r':'𝓇','s':'𝓈','t':'𝓉','u':'𝓊','v':'𝓋','w':'𝓌','x':'𝓍','y':'𝓎','z':'𝓏'
-};
-function mapFancy(text){ let out=''; for(let ch of text) out += FANCY_MAP[ch] || ch; return out; }
-
-/* Fraktur manual map uppercase & lowercase (subset) */
-const FRAKTUR_MAP = {
- 'A':'𝔄','B':'𝔅','C':'ℭ','D':'𝔇','E':'𝔈','F':'𝔉','G':'𝔊','H':'ℌ','I':'ℑ','J':'𝔍','K':'𝔎','L':'𝔏','M':'𝔐','N':'𝔑','O':'𝔒','P':'𝔓','Q':'𝔔','R':'ℜ','S':'𝔖','T':'𝔗','U':'𝔘','V':'𝔙','W':'𝔚','X':'𝔛','Y':'𝔜','Z':'ℨ',
- 'a':'𝔞','b':'𝔟','c':'𝔠','d':'𝔡','e':'𝔢','f':'𝔣','g':'𝔤','h':'𝔥','i':'𝔦','j':'𝔧','k':'𝔨','l':'𝔩','m':'𝔪','n':'𝔫','o':'𝔬','p':'𝔭','q':'𝔮','r':'𝔯','s':'𝔰','t':'𝔱','u':'𝔲','v':'𝔳','w':'𝔴','x':'𝔵','y':'𝔶','z':'𝔷'
-};
-function mapFraktur(text){ let o=''; for(let ch of text) o += FRAKTUR_MAP[ch] || ch; return o; }
-
-/* Small caps map for lowercase letters (subset) */
-const SMALL_MAP = {
- a:'ᴀ', b:'ʙ', c:'ᴄ', d:'ᴅ', e:'ᴇ', f:'ꜰ', g:'ɢ', h:'ʜ', i:'ɪ', j:'ᴊ', k:'ᴋ', l:'ʟ', m:'ᴍ', n:'ɴ', o:'ᴏ', p:'ᴘ', q:'ǫ', r:'ʀ', s:'s', t:'ᴛ', u:'ᴜ', v:'ᴠ', w:'ᴡ', x:'x', y:'ʏ', z:'ᴢ'
-};
-function mapSmallCaps(text){ let out=''; for(let ch of text){ if(ch>='A' && ch<='Z') out += ch; else out += SMALL_MAP[ch] || ch; } return out; }
-
-/* Superscript tiny (limited letters/digits) */
-const SUPER_MAP = { '0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹',
-  'a':'ᵃ','b':'ᵇ','c':'ᶜ','d':'ᵈ','e':'ᵉ','f':'ᶠ','g':'ᵍ','h':'ʰ','i':'ⁱ','j':'ʲ','k':'ᵏ','l':'ˡ','m':'ᵐ','n':'ⁿ',
-  'o':'ᵒ','p':'ᵖ','r':'ʳ','s':'ˢ','t':'ᵗ','u':'ᵘ','v':'ᵛ','w':'ʷ','x':'ˣ','y':'ʸ','z':'ᶻ' };
-function mapSuperscript(text){ let out=''; for(let ch of text){ const low = ch.toLowerCase(); out += SUPER_MAP[low] || ch; } return out; }
-
-/* Double-struck map (subset) */
-const DOUBLE_MAP = {'A':'𝔸','B':'𝔹','C':'ℂ','D':'𝔻','E':'𝔼','F':'𝔽','G':'𝔾','H':'ℍ','I':'𝕀','J':'𝕁','K':'𝕂','L':'𝕃','M':'𝕄','N':'ℕ','O':'𝕆','P':'ℙ','Q':'ℚ','R':'ℝ','S':'𝕊','T':'𝕋','U':'𝕌','V':'𝕍','W':'𝕎','X':'𝕏','Y':'𝕐','Z':'ℤ',
- 'a':'𝕒','b':'𝕓','c':'𝕔','d':'𝕕','e':'𝕖','f':'𝕗','g':'𝕘','h':'𝕙','i':'𝕚','j':'𝕛','k':'𝕜','l':'𝕝','m':'𝕞','n':'𝕟','o':'𝕠','p':'𝕡','q':'𝕢','r':'𝕣','s':'𝕤','t':'𝕥','u':'𝕦','v':'𝕧','w':'𝕨','x':'𝕩','y':'𝕪','z':'𝕫'};
-function mapDouble(text){ let o=''; for(let ch of text) o += DOUBLE_MAP[ch] || ch; return o; }
-
-/* Bracketed / squared map for uppercase (A->🄰 style) use enclosed alphanumerics U+1F130+ */
-function mapBracketed(text){
-  // Use squared latin capital letters where possible U+1F130.. not continuous for A; fallback to original with brackets
-  let out='';
-  for(let ch of text){
-    const cp = ch.codePointAt(0);
-    if(cp>=0x41 && cp<=0x5A){
-      // map A->🄰 (U+1F130) but many fonts may not support; fallback to [A]
-      try {
-        out += String.fromCodePoint(0x1F130 + (cp-0x41));
-      } catch(e){
-        out += '['+ch+']';
-      }
-    } else out += ch;
-  }
-  return out;
-}
-
-/* Monospace mapping (Mathematical monospace) */
-function mapMono(text){
-  let out='';
-  for(let ch of text){
-    const cp = ch.codePointAt(0);
-    if(cp>=0x41 && cp<=0x5A) out += String.fromCodePoint(0x1D670 + (cp-0x41));
-    else if(cp>=0x61 && cp<=0x7A) out += String.fromCodePoint(0x1D68A + (cp-0x61));
-    else if(cp>=0x30 && cp<=0x39) out += String.fromCodePoint(0x1D7F6 + (cp-0x30));
-    else out += ch;
-  }
-  return out;
-}
-
-/* Stroked (combine unicode overlay) - simple replacement using combining long stroke U+0336 */
-function mapStroked(text){
-  let out='';
-  for(let ch of text){
-    out += ch + '\u0336';
-  }
-  return out;
-}
-
-/* Slashed: use unicode slash overlay U+0337 */
-function mapSlashed(text){
-  let out='';
-  for(let ch of text){
-    out += ch + '\u0337';
-  }
-  return out;
-}
-
-/* Central transform dispatcher */
-function transformStyle(style, text){
-  if(!text) return '';
-  if(style === 'bold') return mapBold(text);
-  if(style === 'fullwidth') return mapFullwidth(text);
-  if(style === 'circled') return mapCircled(text);
-  if(style === 'fancy') return mapFancy(text);
-  if(style === 'fraktur') return mapFraktur(text);
-  if(style === 'smallcaps') return mapSmallCaps(text);
-  if(style === 'superscript') return mapSuperscript(text);
-  if(style === 'doublestruck') return mapDouble(text);
-  if(style === 'bracketed') return mapBracketed(text);
-  if(style === 'mono') return mapMono(text);
-  if(style === 'stroked') return mapStroked(text);
-  if(style === 'slashed') return mapSlashed(text);
-  return text;
-}
-
-/* ---------- UI build ---------- */
-const grid = document.getElementById('grid');
-const input = document.getElementById('userInput');
-const searchInput = document.getElementById('searchInput');
-const searchBtn = document.getElementById('searchBtn');
-const toast = document.getElementById('toast');
-let selectedStyle = null;
-
-function showToast(msg){
-  toast.textContent = msg;
-  toast.classList.add('show');
-  setTimeout(()=> toast.classList.remove('show'),1600);
-}
-
-function buildGrid(){
-  grid.innerHTML = '';
-  const q = (searchInput.value || '').trim().toLowerCase();
-  const list = STYLES.filter(s => s.name.toLowerCase().includes(q) || s.id.includes(q));
-  for(const style of list){
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.dataset.style = style.id;
-
-    const p = document.createElement('div');
-    p.className = 'preview';
-    // preview always shows transformed BUSTAMI
-    p.textContent = transformStyle(style.id, 'BUSTAMI');
-
-    const n = document.createElement('div');
-    n.className = 'name';
-    n.textContent = style.name;
-
-    card.appendChild(p);
-    card.appendChild(n);
-
-    card.addEventListener('click', async (e) => {
-      // copy transformed input (or BUSTAMI if empty)
-      const text = (input.value && input.value.trim()) ? input.value : 'BUSTAMI';
-      const styled = transformStyle(style.id, text);
-      try {
-        if(navigator.clipboard && navigator.clipboard.writeText){
-          await navigator.clipboard.writeText(styled);
-          showToast('Copied styled text ✅');
-        } else {
-          // fallback
-          const ta = document.createElement('textarea');
-          ta.value = styled;
-          document.body.appendChild(ta);
-          ta.select();
-          document.execCommand('copy');
-          ta.remove();
-          showToast('Copied styled text ✅');
-        }
-      } catch(err){
-        console.error(err);
-        showToast('Copy failed — try again');
-      }
-
-      // mark selection visually & update previews: selected card shows selected transform of user text
-      selectedStyle = style.id;
-      document.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
-      card.classList.add('selected');
-      // update previews: selected card shows transformed input, others keep BUSTAMI preview
-      document.querySelectorAll('.card').forEach(c => {
-        const st = c.dataset.style;
-        const previewEl = c.querySelector('.preview');
-        if(st === selectedStyle){
-          previewEl.textContent = transformStyle(st, (input.value && input.value.trim()) ? input.value : 'BUSTAMI');
-        } else {
-          previewEl.textContent = transformStyle(st, 'BUSTAMI');
-        }
-      });
-    });
-
-    grid.appendChild(card);
-  }
-}
-
-/* initial build */
-buildGrid();
-
-/* events */
-searchBtn.addEventListener('click', buildGrid);
-searchInput.addEventListener('keypress', e => { if(e.key === 'Enter') buildGrid(); });
-
-document.getElementById('copyStyled').addEventListener('click', async () => {
-  if(!selectedStyle){ showToast('Click a style card first'); return; }
-  const text = (input.value && input.value.trim()) ? input.value : 'BUSTAMI';
-  const styled = transformStyle(selectedStyle, text);
-  try {
-    if(navigator.clipboard && navigator.clipboard.writeText){ await navigator.clipboard.writeText(styled); showToast('Copied styled text ✅'); }
-    else { const ta=document.createElement('textarea'); ta.value=styled; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); showToast('Copied styled text ✅'); }
-  } catch(e){ console.error(e); showToast('Copy failed'); }
-});
-
-document.getElementById('copyPlain').addEventListener('click', async () => {
-  const text = (input.value && input.value.trim()) ? input.value : 'BUSTAMI';
-  try {
-    if(navigator.clipboard && navigator.clipboard.writeText){ await navigator.clipboard.writeText(text); showToast('Copied plain text ✅'); }
-    else { const ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); showToast('Copied plain text ✅'); }
-  } catch(e){ console.error(e); showToast('Copy failed'); }
-});
-
-/* keep previews simple while typing (do not auto-convert all) */
-input.addEventListener('input', () => {
-  // if a card is selected, update that card preview to show typed text transformed,
-  // others remain showing BUSTAMI
-  document.querySelectorAll('.card').forEach(c => {
-    const st = c.dataset.style;
-    const previewEl = c.querySelector('.preview');
-    if(st === selectedStyle){
-      previewEl.textContent = transformStyle(st, (input.value && input.value.trim()) ? input.value : 'BUSTAMI');
-    } else {
-      previewEl.textContent = transformStyle(st, 'BUSTAMI');
+    // Update preview
+    function updatePreview() {
+      preview.innerText = input.value || "BUSTAMI";
+      renderFonts();
     }
-  });
-});
-</script>
+
+    // Render fonts dynamically
+    function renderFonts() {
+      const text = input.value || "BUSTAMI";
+      grid.innerHTML = "";
+      fonts.forEach((f) => {
+        const div = document.createElement("div");
+        div.className = "font-card";
+        div.innerText = f.replace(/BUSTAMI/gi, text);
+        div.onclick = () => copyFont(div.innerText);
+        grid.appendChild(div);
+      });
+    }
+
+    // Copy function
+    function copyFont(text) {
+      navigator.clipboard.writeText(text);
+      showToast();
+    }
+
+    function showToast() {
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 1500);
+    }
+
+    renderFonts();
+  </script>
 </body>
 </html>
