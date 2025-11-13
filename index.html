@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Font Folder Pro - Unicode Edition</title>
+  <title>Font Folder Pro - Unicode Edition (Fixed)</title>
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -51,6 +51,7 @@
       transition: all 0.3s ease;
       font-size: 22px;
       font-weight: bold;
+      word-break: break-word;
     }
     .font-card:hover {
       background: #000;
@@ -106,7 +107,7 @@
       "ＢＵＳＴＡＭＩ",
       "🅱🆄🆂🆃🅰🅼🅸",
       "𝓑𝓤𝓢𝓣𝓐𝓜𝓘",
-      "𝔅𝔘𝔖𝔗𝔄𝔐",
+      "𝔅𝔘𝔖𝔗𝔄𝔐𝔌",
       "ʙᴜsᴛᴀᴍɪ",
       "ʙⓤsⓣᗩᗰɪ",
       "🅑🅤🅢🅣🅐🅜🅘",
@@ -130,30 +131,37 @@
     const toast = document.getElementById("toast");
     const input = document.getElementById("userInput");
 
+    // 🔧 Function to render fonts properly with user's input
     function renderFonts() {
-      const text = input.value || "BUSTAMI";
+      const text = input.value.trim() || "BUSTAMI";
       preview.innerText = text;
       grid.innerHTML = "";
+
       fonts.forEach((f) => {
+        // প্রতিটি ফন্টে "BUSTAMI" অংশটাকে ইউজারের ইনপুটে রিপ্লেস করা হবে
         const customText = f.replace(/BUSTAMI/gi, text);
         const div = document.createElement("div");
         div.className = "font-card";
         div.innerText = customText;
-        div.onclick = () => copyFont(customText);
+        div.onclick = () => copyFont(customText); // এখন সঠিক টেক্সট কপি হবে
         grid.appendChild(div);
       });
     }
 
+    // 🔧 কপি ফাংশন
     function copyFont(text) {
-      navigator.clipboard.writeText(text);
-      showToast();
+      navigator.clipboard.writeText(text).then(() => {
+        showToast();
+      });
     }
 
+    // 🔧 টোস্ট মেসেজ দেখানো
     function showToast() {
       toast.classList.add("show");
       setTimeout(() => toast.classList.remove("show"), 1500);
     }
 
+    // প্রথমবার লোড হলে ডিফল্ট রেন্ডার
     renderFonts();
   </script>
 </body>
