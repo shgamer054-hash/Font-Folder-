@@ -1,202 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Font Folder Pro - Unicode Edition</title>
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(180deg, #111, #222);
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-    }
-    h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
-      letter-spacing: 2px;
-    }
-    p {
-      color: #ccc;
-      font-size: 14px;
-    }
-    .input-area {
-      margin: 20px auto;
-      max-width: 400px;
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-    }
-    input {
-      width: 100%;
-      padding: 10px;
-      border-radius: 8px;
-      border: none;
-      outline: none;
-      font-size: 16px;
-    }
-    .font-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 15px;
-      margin-top: 30px;
-    }
-    .font-card {
-      background: #fff;
-      color: #000;
-      border-radius: 12px;
-      padding: 15px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: 22px;
-      font-weight: bold;
-      word-wrap: break-word;
-    }
-    .font-card:hover {
-      background: #000;
-      color: #fff;
-      transform: scale(1.05);
-    }
-    .toast {
-      position: fixed;
-      bottom: -50px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #00ff99;
-      color: #000;
-      padding: 10px 25px;
-      border-radius: 25px;
-      font-weight: bold;
-      opacity: 0;
-      transition: all 0.5s ease;
-    }
-    .toast.show {
-      bottom: 30px;
-      opacity: 1;
-    }
-    .preview {
-      background: #fff;
-      color: #000;
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 20px;
-      display: inline-block;
-      font-size: 24px;
-      font-weight: bold;
-      min-width: 180px;
-    }
-    .article {
-      max-width: 800px;
-      margin: 50px auto 0;
-      text-align: left;
-      background: #1a1a1a;
-      padding: 20px;
-      border-radius: 12px;
-      line-height: 1.6;
-    }
-    .article h2 {
-      color: #00ffcc;
-      margin-bottom: 10px;
-    }
-    .article p {
-      color: #ccc;
-      font-size: 15px;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Font Folder Pro - Unicode Edition</title>
+<style>
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(180deg, #111, #222);
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+h1 { font-size: 32px; margin-bottom: 10px; letter-spacing: 2px; }
+p { color: #ccc; font-size: 14px; }
+
+.input-area {
+  margin: 20px auto;
+  max-width: 400px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+.font-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+  margin-top: 30px;
+}
+.font-card {
+  background: #fff;
+  color: #000;
+  border-radius: 12px;
+  padding: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 22px;
+  font-weight: bold;
+  word-wrap: break-word;
+}
+.font-card:hover {
+  background: #000;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.toast {
+  position: fixed;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #00ff99;
+  color: #000;
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-weight: bold;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+.toast.show {
+  bottom: 30px;
+  opacity: 1;
+}
+
+.preview {
+  background: #fff;
+  color: #000;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  display: inline-block;
+  font-size: 24px;
+  font-weight: bold;
+  min-width: 180px;
+}
+
+.article {
+  max-width: 800px;
+  margin: 50px auto 0;
+  text-align: left;
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 12px;
+  line-height: 1.6;
+}
+.article h2 { color: #00ffcc; margin-bottom: 10px; }
+.article p { color: #ccc; font-size: 15px; }
+</style>
 </head>
 <body>
-  <h1>FONT FOLDER PRO</h1>
-  <p>Type your text below and click a font to copy your styled text</p>
 
-  <div class="input-area">
-    <input type="text" id="userInput" placeholder="Type your text here..." oninput="renderFonts()" />
-  </div>
+<h1>FONT FOLDER PRO</h1>
+<p>Type your text below and click a font to copy your styled text</p>
 
-  <div class="preview" id="previewText">BUSTAMI</div>
+<div class="input-area">
+  <input type="text" id="userInput" placeholder="Type your text here..." oninput="renderFonts()" />
+</div>
 
-  <div class="font-grid" id="fontGrid"></div>
+<div class="preview" id="previewText">BUSTAMI</div>
+<div class="font-grid" id="fontGrid"></div>
+<div id="toast" class="toast">Copied!</div>
 
-  <div id="toast" class="toast">Copied!</div>
+<div class="article">
+  <h2>About Font Folder Pro</h2>
+  <p><strong>Font Folder Pro</strong> is an online Unicode-based text styling tool that lets users instantly convert any text into 20+ unique and stylish fonts. You can preview your text live and copy your favorite font with a single click.</p>
+  <p>This tool is perfect for social media posts, usernames, bios, or any creative text design. Every font is fully Unicode compatible, so it works on all platforms like Messenger, Instagram, Facebook, and Discord.</p>
+  <p><strong>Features:</strong></p>
+  <ul style="margin-left:20px; color:#aaa; line-height:1.7;">
+    <li>Live text preview</li>
+    <li>20+ stylish Unicode fonts</li>
+    <li>One-click copy</li>
+    <li>Responsive, mobile-friendly design</li>
+    <li>Modern dark theme UI</li>
+  </ul>
+  <p><strong>How to Use:</strong> Type your text in the box above, select a font style, and click it to copy instantly. Then paste it anywhere you like.</p>
+  <p><em>Created for everyone who loves beautiful text!</em></p>
+</div>
 
-  <div class="article">
-    <h2>About Font Folder Pro</h2>
-    <p>
-      <strong>Font Folder Pro</strong> is a powerful Unicode-based text styling tool that allows users 
-      to instantly convert plain text into over 20 unique and stylish font designs. 
-      With a clean and modern interface, users can simply type any word or phrase, 
-      preview it in multiple fonts, and copy their favorite version with a single click.
-    </p>
-    <p>
-      This tool is perfect for social media captions, usernames, bios, or any creative text design. 
-      Each style is Unicode-based, meaning the generated fonts are compatible with 
-      all major platforms including Messenger, Instagram, Facebook, Discord, and more.
-    </p>
-    <p>
-      The simplicity and speed of <strong>Font Folder Pro</strong> make it ideal for creators, 
-      designers, and anyone who wants to stand out with unique typography. 
-      Whether you’re customizing a name, a quote, or a brand title — Font Folder Pro 
-      gives you instant access to stylish Unicode fonts without the need for downloads or apps.
-    </p>
-    <p>
-      <em>Created with passion — for everyone who loves beautiful text!</em>
-    </p>
-  </div>
+<script>
+const fonts = [
+  "ＢＵＳＴＡＭＩ",
+  "🅱🆄🆂🆃🅰🅼🅸",
+  "𝓑𝓤𝓢𝓣𝓐𝓜𝓘",
+  "𝔅𝔘𝔖𝔗𝔄𝔐𝔌",
+  "ʙᴜsᴛᴀᴍɪ",
+  "ʙⓤsⓣᗩᗰɪ",
+  "🅑🅤🅢🅣🅐🅜🅘",
+  "𝗕𝗨𝗦𝗧𝗔𝗠𝗜",
+  "𝑩𝑼𝑺𝑻𝑨𝑴𝑰",
+  "𝘉𝘜𝘚𝘛𝘈𝘔𝘐",
+  "𝙱𝚄𝚂𝚃𝙰𝙼𝙸",
+  "🄱🅄🅂🅃🄰🄼🄸",
+  "🅑🅤🅢🅣🅐🅜🅘",
+  "Ｂｕｓｔａｍｉ",
+  "Ⓑⓤⓢⓣⓐⓜⓘ",
+  "Ｂ🆄ＳＴ🅰🅼Ｉ",
+  "🅱ust🅰m🅸",
+  "𝓑𝓾𝓼𝓽𝓪𝓶𝓲",
+  "ＢＵＳＴＡＭＩ⚡",
+  "🅑🅤🅢🅣🅐🅜🅘🔥"
+];
 
-  <script>
-    const fonts = [
-      "ＢＵＳＴＡＭＩ",
-      "🅱🆄🆂🆃🅰🅼🅸",
-      "𝓑𝓤𝓢𝓣𝓐𝓜𝓘",
-      "𝔅𝔘𝔖𝔗𝔄𝔐𝔌",
-      "ʙᴜsᴛᴀᴍɪ",
-      "ʙⓤsⓣᗩᗰɪ",
-      "🅑🅤🅢🅣🅐🅜🅘",
-      "𝗕𝗨𝗦𝗧𝗔𝗠𝗜",
-      "𝑩𝑼𝑺𝑻𝑨𝑴𝑰",
-      "𝘉𝘜𝘚𝘛𝘈𝘔𝘐",
-      "𝙱𝚄𝚂𝚃𝙰𝙼𝙸",
-      "🄱🅄🅂🅃🄰🄼🄸",
-      "🅑🅤🅢🅣🅐🅜🅘",
-      "Ｂｕｓｔａｍｉ",
-      "Ⓑⓤⓢⓣⓐⓜⓘ",
-      "Ｂ🆄ＳＴ🅰🅼Ｉ",
-      "🅱ust🅰m🅸",
-      "𝓑𝓾𝓼𝓽𝓪𝓶𝓲",
-      "ＢＵＳＴＡＭＩ⚡",
-      "🅑🅤🅢🅣🅐🅜🅘🔥"
-    ];
+const grid = document.getElementById("fontGrid");
+const preview = document.getElementById("previewText");
+const toast = document.getElementById("toast");
+const input = document.getElementById("userInput");
 
-    const grid = document.getElementById("fontGrid");
-    const preview = document.getElementById("previewText");
-    const toast = document.getElementById("toast");
-    const input = document.getElementById("userInput");
+function renderFonts() {
+  const text = input.value.trim() || "BUSTAMI";
+  preview.innerText = text;
+  grid.innerHTML = "";
 
-    function renderFonts() {
-      const text = input.value.trim() || "BUSTAMI";
-      preview.innerText = text;
-      grid.innerHTML = "";
+  fonts.forEach(f => {
+    const div = document.createElement("div");
+    div.className = "font-card";
+    div.innerText = f.replace(/BUSTAMI/gi, text);
+    div.onclick = () => copyFont(div.innerText);
+    grid.appendChild(div);
+  });
+}
 
-      fonts.forEach((style) => {
-        const div = document.createElement("div");
-        div.className = "font-card";
-        const mapped = style.replace(/BUSTAMI/gi, text);
-        div.innerText = mapped;
-        div.onclick = () => copyFont(mapped);
-        grid.appendChild(div);
-      });
-    }
+function copyFont(text) {
+  navigator.clipboard.writeText(text).then(() => showToast());
+}
 
-    function copyFont(text) {
-      navigator.clipboard.writeText(text).then(() => showToast());
-    }
+function showToast() {
+  toast.classList.add("show");
+  setTimeout(() => toast.classList.remove("show"), 1500);
+}
 
-    function showToast() {
-      toast.classList.add("show");
-      setTimeout(() => toast.classList.remove("show"), 1500);
-    }
-
-    renderFonts();
-  </script>
+renderFonts();
+</script>
 </body>
 </html>
