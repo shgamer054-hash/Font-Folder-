@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Font Folder — Black & White Demo (20 styles)</title>
+<title>Font Folder — Black & White (20+ styles)</title>
 <style>
   :root{
     --bg:#0b0b0b;
@@ -25,13 +25,12 @@
   h1{margin:0;color:var(--card);font-size:26px;letter-spacing:1px}
   p.lead{margin:6px 0 18px;color:var(--muted);max-width:900px;margin-left:auto;margin-right:auto;font-size:14px}
 
-  /* editor + actions */
   .editor {
     width:100%;
-    max-width:1000px;
-    margin:0 auto 18px;
+    max-width:900px;
+    margin:0 auto 12px;
     display:flex;
-    gap:12px;
+    gap:10px;
     align-items:center;
     justify-content:space-between;
     flex-wrap:wrap;
@@ -39,74 +38,87 @@
   #articleInput{
     flex:1;
     min-width:220px;
-    padding:14px 16px;
+    padding:10px 14px;
     border-radius:12px;
     border:2px solid rgba(255,255,255,0.08);
-    font-size:18px;
+    font-size:16px;
     background:transparent;
     color:var(--card);
   }
-  .actions{ display:flex; gap:10px; align-items:center }
+  .actions{ display:flex; gap:8px; align-items:center }
   .btn{
     background:var(--card);
     color:var(--text);
-    border:none;padding:10px 14px;border-radius:12px;font-weight:700;cursor:pointer;
-    box-shadow:none;
+    border:none;padding:8px 12px;border-radius:10px;font-weight:700;cursor:pointer;
   }
   .btn.secondary{
     background:transparent;color:var(--card);border:2px solid rgba(255,255,255,0.06);
   }
 
-  /* grid — single column tall cards like screenshot */
+  /* top preview board */
+  .top-preview{
+    width:100%;
+    max-width:900px;
+    margin:0 auto 14px;
+    background:var(--card);
+    color:var(--text);
+    border-radius:16px;
+    padding:14px 16px;
+    text-align:center;
+    min-height:52px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+    font-weight:700;
+    letter-spacing:1.4px;
+  }
+
   .font-grid{
     width:100%;
     max-width:900px;
-    margin:10px auto;
+    margin:6px auto 0;
     display:grid;
     grid-template-columns:1fr;
-    gap:16px;
+    gap:12px;
     align-items:start;
   }
   .font-card{
     background:var(--card);
     color:var(--text);
-    border-radius:18px;
-    padding:22px 18px;
+    border-radius:16px;
+    padding:14px 12px;
     text-align:center;
     cursor:pointer;
-    transition:transform .18s, box-shadow .18s, border .18s;
-    border:4px solid rgba(255,255,255,0.03);
-    min-height:72px;
+    transition:transform .16s, box-shadow .16s, border .16s, background .16s, color .16s;
+    border:3px solid rgba(255,255,255,0.03);
+    min-height:56px;
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
   }
-  .font-card:hover{ transform:translateY(-6px) scale(1.01); box-shadow:0 18px 40px rgba(0,0,0,0.35) }
-  .font-card.selected{ border-color: rgba(0,0,0,0.6); box-shadow: 0 10px 30px rgba(0,0,0,0.4) }
+  .font-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 14px 26px rgba(0,0,0,0.5);
+  }
+  .font-card.selected{
+    background:#000;
+    color:#fff;
+    border-color:#fff;
+    box-shadow:0 16px 30px rgba(0,0,0,0.8);
+  }
 
   .font-preview{
-    font-size:28px;
-    margin-bottom:8px;
-    min-height:34px;
+    font-size:20px;
+    margin-bottom:4px;
+    min-height:26px;
     line-height:1;
     word-break:break-word;
-    letter-spacing:1.6px;
+    letter-spacing:1.4px;
   }
-  .font-name{ font-weight:700; color:var(--muted); letter-spacing:1px; font-size:12px }
+  .font-name{ font-weight:600; color:var(--muted); letter-spacing:.8px; font-size:11px;text-transform:uppercase }
 
-  .about{
-    width:100%;
-    max-width:900px;
-    margin:28px auto;
-    background:transparent;
-    padding:18px;
-    border-radius:12px;
-    color:var(--muted);
-  }
-  footer{ text-align:center; color:var(--muted); margin-top:18px; font-size:13px }
-
-  /* Article section below grid (English article as requested) */
   .article-section{
     width:100%;
     max-width:900px;
@@ -116,16 +128,52 @@
     color:var(--muted);
     background: rgba(255,255,255,0.02);
     border: 1px solid rgba(255,255,255,0.03);
+    font-size:13px;
   }
-  .article-section h2{ color:var(--card); margin-top:0; font-size:18px }
+  .article-section h2{ color:var(--card); margin-top:0; font-size:17px }
   .article-section p{ color:var(--muted); line-height:1.6 }
 
-  /* responsive */
+  .about{
+    width:100%;
+    max-width:900px;
+    margin:10px auto;
+    background:transparent;
+    padding:10px;
+    border-radius:12px;
+    color:var(--muted);
+    font-size:12px;
+  }
+  footer{ text-align:center; color:var(--muted); margin-top:10px; font-size:12px }
+
+  /* toast */
+  .toast{
+    position:fixed;
+    left:50%;
+    transform:translateX(-50%);
+    bottom:-60px;
+    background:#ffffff;
+    color:#000000;
+    padding:10px 18px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:600;
+    box-shadow:0 14px 30px rgba(0,0,0,0.6);
+    opacity:0;
+    transition:all .35s ease;
+    z-index:50;
+  }
+  .toast.show{
+    bottom:22px;
+    opacity:1;
+  }
+
   @media (max-width:520px){
+    body{padding:14px;}
     .editor{gap:8px}
-    #articleInput{font-size:16px;padding:12px}
-    .font-card{padding:18px}
-    .font-preview{font-size:22px}
+    #articleInput{font-size:15px;padding:9px 12px}
+    .top-preview{font-size:18px;padding:10px}
+    .font-card{padding:12px 10px}
+    .font-preview{font-size:18px}
   }
 </style>
 </head>
@@ -133,37 +181,42 @@
 
 <header>
   <h1>Font Folder</h1>
-  <p class="lead">Type text above and click a font card to preview and copy styled text — black &amp; white design.</p>
+  <p class="lead">Type text below and click a font card to preview & copy stylish Unicode text.</p>
 </header>
 
-<!-- Editor (top) -->
 <div class="editor">
   <input id="articleInput" type="text" placeholder="Type text here... (e.g. BAYEZID)" value="BUSTAMI">
   <div class="actions">
-    <button id="copyStyled" class="btn" title="Copy styled (Unicode) text">Copy Styled Text</button>
+    <button id="copyStyled" class="btn" title="Copy styled (Unicode) text">Copy Styled</button>
     <button id="copyPlain" class="btn secondary" title="Copy plain text">Copy Plain</button>
   </div>
 </div>
 
-<!-- FONT GRID: 20 styles -->
-<div class="font-grid" id="fontGrid">
-  <!-- cards will be generated by JS -->
+<!-- top preview board -->
+<div id="topPreview" class="top-preview">BUSTAMI</div>
+
+<!-- grid -->
+<div class="font-grid" id="fontGrid"></div>
+
+<div class="article-section">
+  <h2>About Font Folder</h2>
+  <p>
+    Font Folder converts your normal text into multiple Unicode font styles so you can paste them on
+    Messenger, Instagram, Facebook, or anywhere else. Choose a style, preview it, and copy with one tap.
+  </p>
 </div>
 
-<!-- English Article Section -->
-<div class="article-section" aria-labelledby="article-title">
-  <h2 id="article-title">Article — How Fonts Shape Your Message</h2>
-  <p>
-    Fonts influence tone, readability, and first impressions. Use different Unicode styles to make usernames,
-    bios, or social posts stand out. Click any style to preview how your text looks and copy the styled version for use across platforms.
-  </p>
+<div class="about">
+  Tap any style card to select it. The selected card turns black and the preview above updates.
+  Use <strong>Copy Styled</strong> to copy the styled text or <strong>Copy Plain</strong> for normal text.
 </div>
 
 <footer>© Font Folder — Demo</footer>
 
+<div id="toast" class="toast">Copied!</div>
+
 <script>
-/* ---------- MANY style mappers (20) ---------- */
-/* Helper: contiguous block mapper */
+/* helpers */
 function blockMapper(upperBase, lowerBase, digitBase){
   return function(ch){
     const cp = ch.codePointAt(0);
@@ -174,189 +227,196 @@ function blockMapper(upperBase, lowerBase, digitBase){
   };
 }
 
-/* Specific maps (reused/adapted from the dynamic version) */
-const styleMappers = [
-  {name:'Fullwidth', fn: function(ch){
-    const cp = ch.codePointAt(0);
-    if (cp >= 33 && cp <= 126) return String.fromCodePoint(0xFF00 + (cp - 0));
-    return ch;
+/* style list (২০+ স্টাইল, অনেকগুলো তোমার BUSTAMI ফন্টের ধরন কভার করে) */
+const styles = [
+  { name:'Fullwidth', fn: ch => {
+      const cp = ch.codePointAt(0);
+      if (cp >= 33 && cp <= 126) return String.fromCodePoint(0xFF00 + (cp - 0));
+      return ch;
   }},
-  {name:'Bold', fn: blockMapper(0x1D400,0x1D41A,0x1D7CE)},
-  {name:'Italic', fn: blockMapper(0x1D434,0x1D44E,null)},
-  {name:'Bold Italic', fn: blockMapper(0x1D468,0x1D482,null)},
-  {name:'Script', fn: blockMapper(0x1D49C,0x1D4B6,null)},
-  {name:'Fraktur', fn: blockMapper(0x1D504,0x1D51E,null)},
-  {name:'Double-struck', fn: blockMapper(0x1D538,0x1D552,null)},
-  {name:'Monospace', fn: blockMapper(0x1D670,0x1D68A,null)},
-  {name:'Sans Bold', fn: blockMapper(0x1D5D4,0x1D5EE,null)},
-  {name:'Sans Italic', fn: blockMapper(0x1D608,0x1D622,null)},
-  {name:'Circled', fn: function(ch){
-    const cp = ch.codePointAt(0);
-    if (cp >= 0x41 && cp <= 0x5A) return String.fromCodePoint(0x24B6 + (cp - 0x41));
-    if (cp >= 0x61 && cp <= 0x7A) return String.fromCodePoint(0x24D0 + (cp - 0x61));
-    if (cp >= 0x30 && cp <= 0x39) return String.fromCodePoint(0x2460 + (cp - 0x30)); // 1..10
-    return ch;
+  { name:'Bold', fn: blockMapper(0x1D400,0x1D41A,0x1D7CE) },
+  { name:'Italic', fn: blockMapper(0x1D434,0x1D44E,null) },
+  { name:'Bold Italic', fn: blockMapper(0x1D468,0x1D482,null) },
+  { name:'Script', fn: blockMapper(0x1D49C,0x1D4B6,null) },      // 𝓑𝓤𝓢𝓣𝓐𝓜𝓘 টাইপ
+  { name:'Fraktur', fn: blockMapper(0x1D504,0x1D51E,null) },     // 𝔅𝔘𝔖...
+  { name:'Double-struck', fn: blockMapper(0x1D538,0x1D552,null) },
+  { name:'Monospace', fn: blockMapper(0x1D670,0x1D68A,null) },
+  { name:'Sans Bold', fn: blockMapper(0x1D5D4,0x1D5EE,null) },   // 𝗕𝗨𝗦...
+  { name:'Sans Italic', fn: blockMapper(0x1D608,0x1D622,null) },
+  { name:'Circled', fn: ch => {
+      const cp = ch.codePointAt(0);
+      if (cp >= 0x41 && cp <= 0x5A) return String.fromCodePoint(0x24B6 + (cp - 0x41));
+      if (cp >= 0x61 && cp <= 0x7A) return String.fromCodePoint(0x24D0 + (cp - 0x61));
+      return ch;
   }},
-  {name:'Squared', fn: function(ch){
-    const cp = ch.codePointAt(0);
-    if (cp >= 0x41 && cp <= 0x5A) return String.fromCodePoint(0x1F130 + (cp - 0x41));
-    return ch;
+  { name:'Small Caps', fn: ch => {
+      const small = {
+        a:'ᴀ',b:'ʙ',c:'ᴄ',d:'ᴅ',e:'ᴇ',f:'ꜰ',g:'ɢ',h:'ʜ',i:'ɪ',j:'ᴊ',k:'ᴋ',l:'ʟ',m:'ᴍ',
+        n:'ɴ',o:'ᴏ',p:'ᴘ',q:'ǫ',r:'ʀ',s:'s',t:'ᴛ',u:'ᴜ',v:'ᴠ',w:'ᴡ',x:'x',y:'ʏ',z:'ᴢ'
+      };
+      if (/[a-z]/.test(ch)) return small[ch]||ch;
+      if (/[A-Z]/.test(ch)) return (small[ch.toLowerCase()]||ch.toLowerCase()).toUpperCase();
+      return ch;
   }},
-  {name:'Small Caps', fn: function(ch){
-    const small = {
-      a:'ᴀ',b:'ʙ',c:'ᴄ',d:'ᴅ',e:'ᴇ',f:'ꜰ',g:'ɢ',h:'ʜ',i:'ɪ',j:'ᴊ',k:'ᴋ',l:'ʟ',m:'ᴍ',
-      n:'ɴ',o:'ᴏ',p:'ᴘ',q:'ǫ',r:'ʀ',s:'s',t:'ᴛ',u:'ᴜ',v:'ᴠ',w:'ᴡ',x:'x',y:'ʏ',z:'ᴢ'
-    };
-    if (/[a-z]/.test(ch)) return small[ch]||ch;
-    if (/[A-Z]/.test(ch)) return (small[ch.toLowerCase()]||ch.toLowerCase()).toUpperCase();
-    return ch;
+  { name:'Fancy Script', fn: ch => {
+      const map = {'A':'𝒜','B':'𝓑','C':'𝒞','D':'𝒟','E':'ℰ','F':'𝓕','G':'𝒢','H':'ℋ','I':'ℐ','J':'𝒥','K':'𝒦','L':'ℒ','M':'𝓜','N':'𝓝','O':'𝒪','P':'𝒫','Q':'𝒬','R':'ℛ','S':'𝒮','T':'𝒯','U':'𝒰','V':'𝒱','W':'𝒲','X':'𝒳','Y':'𝒴','Z':'𝒵',
+        'a':'𝒶','b':'𝒷','c':'𝒸','d':'𝒹','e':'ℯ','f':'𝒻','g':'ℊ','h':'𝒽','i':'𝒾','j':'𝒿','k':'𝓀','l':'𝓁','m':'𝓂','n':'𝓃','o':'ℴ','p':'𝓅','q':'𝓆','r':'𝓇','s':'𝓈','t':'𝓉','u':'𝓊','v':'𝓋','w':'𝓌','x':'𝓍','y':'𝓎','z':'𝓏'};
+      return map[ch]||ch;
   }},
-  {name:'Fancy Script', fn: function(ch){
-    const map = {'A':'𝒜','B':'𝓑','C':'𝒞','D':'𝒟','E':'ℰ','F':'𝓕','G':'𝒢','H':'ℋ','I':'ℐ','J':'𝒥','K':'𝒦','L':'ℒ','M':'𝓜','N':'𝓝','O':'𝒪','P':'𝒫','Q':'𝒬','R':'ℛ','S':'𝒮','T':'𝒯','U':'𝒰','V':'𝒱','W':'𝒲','X':'𝒳','Y':'𝒴','Z':'𝒵',
-      'a':'𝒶','b':'𝒷','c':'𝒸','d':'𝒹','e':'ℯ','f':'𝒻','g':'ℊ','h':'𝒽','i':'𝒾','j':'𝒿','k':'𝓀','l':'𝓁','m':'𝓂','n':'𝓃','o':'ℴ','p':'𝓅','q':'𝓆','r':'𝓇','s':'𝓈','t':'𝓉','u':'𝓊','v':'𝓋','w':'𝓌','x':'𝓍','y':'𝓎','z':'𝓏'};
-    return map[ch]||ch;
+  { name:'Gothic Alt', fn: blockMapper(0x1D56C,0x1D586,null) },
+  { name:'Fullwidth + ⚡', fn: ch => {
+      const cp = ch.codePointAt(0);
+      if (cp >= 33 && cp <= 126) return String.fromCodePoint(0xFF00 + (cp - 0));
+      return ch;
+  }, tail:'⚡' },   // BUSTAMI⚡ টাইপ
+  { name:'Bold + 🔥', fn: blockMapper(0x1D400,0x1D41A,0x1D7CE), tail:'🔥' }, // …🔥
+  { name:'Bracketed', fn: ch => {
+      if (/^[A-Za-z0-9]$/.test(ch)) return '『'+ch+'』';
+      return ch;
   }},
-  {name:'Bold Sans', fn: blockMapper(0x1D5D4,0x1D5EE,null)},
-  {name:'Gothic (Fraktur alt)', fn: blockMapper(0x1D56C,0x1D586,null)},
-  {name:'Boxed Black', fn: function(ch){
-    // simple boxed-look using black-square enclosed letters where possible (use heavy enclosed letters)
-    const cp = ch.codePointAt(0);
-    if (cp >= 0x41 && cp <= 0x5A) return String.fromCodePoint(0x1F170 + (cp - 0x41)); // A..Z in enclosed alphanum?
-    return ch;
+  { name:'Decor ★', fn: ch => {
+      if (/^[A-Za-z0-9]$/.test(ch)) return '★'+ch+'★';
+      return ch;
   }},
-  {name:'Decorative ★', fn: function(ch){
-    if (/^[A-Za-z0-9]$/.test(ch)) return '★'+ch+'★';
-    return ch;
+  { name:'Soft Fullwidth', fn: ch => {
+      const cp = ch.codePointAt(0);
+      if (cp === 0x42) return 'Ｂ'; // কিছু কেসে শুধু look মিলাতে
+      if (cp >= 33 && cp <= 126) return String.fromCodePoint(0xFF00 + (cp - 0));
+      return ch;
   }},
-  {name:'Bracketed', fn: function(ch){
-    if (/^[A-Za-z0-9]$/.test(ch)) return '『'+ch+'』';
-    return ch;
-  }},
-  {name:'Parenthesized', fn: function(ch){
-    const cp = ch.codePointAt(0);
-    if (cp >= 0x41 && cp <= 0x5A) {
-      const map = {A:'Ⓐ',B:'Ⓑ',C:'Ⓒ',D:'Ⓓ',E:'Ⓔ',F:'Ⓕ',G:'Ⓖ',H:'Ⓗ',I:'Ⓘ',J:'Ⓙ',K:'Ⓚ',L:'Ⓛ',M:'Ⓜ',N:'Ⓝ',O:'Ⓞ',P:'Ⓟ',Q:'Ⓠ',R:'Ⓡ',S:'Ⓢ',T:'Ⓣ',U:'Ⓤ',V:'Ⓥ',W:'Ⓦ',X:'Ⓧ',Y:'Ⓨ',Z:'Ⓩ'};
-      return map[String.fromCodePoint(cp)] || ch;
-    }
-    return ch;
+  { name:'Mixed (🅱 + Script)', fn: ch => {
+      const lower = ch.toLowerCase();
+      if (lower === 'b') return '🅱';
+      if (lower === 'a') return '🅰';
+      if (lower === 'i') return '🅸';
+      // বাকিগুলা fancy script
+      const map = {'u':'𝓾','s':'𝓼','t':'𝓽','m':'𝓶'};
+      if (map[lower]) return map[lower];
+      return ch;
   }}
 ];
 
-/* ---------- UI logic ---------- */
 const fontGrid = document.getElementById('fontGrid');
 const articleInput = document.getElementById('articleInput');
 const copyStyledBtn = document.getElementById('copyStyled');
 const copyPlainBtn = document.getElementById('copyPlain');
+const topPreview = document.getElementById('topPreview');
+const toast = document.getElementById('toast');
 
 let selectedIndex = 0;
+let baseText = articleInput.value || '';
 
-/* generate cards from styleMappers (20) */
+function transform(text, style){
+  if (!text) return '';
+  let out = '';
+  for (const ch of text) out += style.fn(ch);
+  if (style.tail) out += style.tail; // ⚡ / 🔥 ইত্যাদি যোগ
+  return out;
+}
+
 function buildGrid(){
   fontGrid.innerHTML = '';
-  styleMappers.forEach((s, idx) => {
+  styles.forEach((style, idx) => {
     const card = document.createElement('div');
     card.className = 'font-card';
     card.dataset.index = idx;
+
     const preview = document.createElement('div');
     preview.className = 'font-preview';
-    // initial preview shows transformed default text
-    preview.textContent = transformForPreview(s, articleInput.value || 'BUSTAMI');
+    preview.textContent = transform(baseText || 'BUSTAMI', style);
+
     const name = document.createElement('div');
     name.className = 'font-name';
-    name.textContent = s.name;
+    name.textContent = style.name;
+
     card.appendChild(preview);
     card.appendChild(name);
+
     card.addEventListener('click', () => {
-      // select
       document.querySelectorAll('.font-card').forEach(c=>c.classList.remove('selected'));
       card.classList.add('selected');
       selectedIndex = idx;
-      // show transformed text big in this card (already set)
-      updatePreviews(); // ensure other cards reset to default placeholder
-      // replace this card preview with transformed actual input
-      preview.textContent = transformText(articleInput.value || '', s.fn);
-      preview.style.letterSpacing = (s.name === 'Circled' || s.name==='Boxed Black') ? '6px' : '1.6px';
+      updateTopPreview();
     });
+
     fontGrid.appendChild(card);
   });
-  // auto-select first
+
   const first = fontGrid.querySelector('.font-card');
-  if(first){ first.classList.add('selected'); selectedIndex = 0; }
+  if (first) first.classList.add('selected');
+  updateTopPreview();
 }
-function transformText(text, fn){
-  if (!text) return '';
-  let out = '';
-  for (const ch of text) out += fn(ch);
-  return out;
+
+function updateTopPreview(){
+  const style = styles[selectedIndex] || styles[0];
+  topPreview.textContent = transform(baseText || 'BUSTAMI', style);
 }
-function transformForPreview(styleObj, text){
-  // keep preview short: show up to first 12 chars mapped
-  const sample = (text || 'BUSTAMI').slice(0, 12);
-  return transformText(sample, styleObj.fn);
-}
-function updatePreviews(){
-  const cards = document.querySelectorAll('.font-card');
-  cards.forEach((card, i) => {
-    const preview = card.querySelector('.font-preview');
-    if (i === selectedIndex) {
-      // set selected preview to full transformed text
-      preview.textContent = transformText(articleInput.value || '', styleMappers[i].fn);
-      preview.style.letterSpacing = (styleMappers[i].name === 'Circled' || styleMappers[i].name==='Boxed Black') ? '6px' : '1.6px';
-    } else {
-      // reset other previews to short sample (placeholder)
-      preview.textContent = transformForPreview(styleMappers[i], articleInput.value || 'BUSTAMI');
-      preview.style.letterSpacing = '1.6px';
-    }
+
+function updateCardPreviews(){
+  document.querySelectorAll('.font-card').forEach(card => {
+    const idx = parseInt(card.dataset.index,10);
+    const st = styles[idx];
+    const prev = card.querySelector('.font-preview');
+    prev.textContent = transform(baseText || 'BUSTAMI', st);
   });
+  updateTopPreview();
 }
 
-/* Copy handlers */
+function showToast(msg){
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(()=>toast.classList.remove('show'),1400);
+}
+
 async function copyStyled(){
-  const text = articleInput.value || '';
-  const mapper = styleMappers[selectedIndex] || styleMappers[0];
-  const styled = transformText(text, mapper.fn);
-  try {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
+  const style = styles[selectedIndex] || styles[0];
+  const styled = transform(baseText, style);
+  try{
+    if (navigator.clipboard && navigator.clipboard.writeText){
       await navigator.clipboard.writeText(styled);
-      alert('Styled text copied ✅ Paste where you like.');
-    } else {
-      const ta = document.createElement('textarea'); ta.value = styled; document.body.appendChild(ta);
-      ta.select(); document.execCommand('copy'); ta.remove();
-      alert('Styled text copied (fallback) ✅');
+    }else{
+      const ta = document.createElement('textarea');
+      ta.value = styled;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      ta.remove();
     }
-  } catch (e) {
-    alert('Copy failed — your browser may block clipboard. Try manual select.');
-  }
-}
-async function copyPlain(){
-  const text = articleInput.value || '';
-  try {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      await navigator.clipboard.writeText(text);
-      alert('Plain text copied ✅');
-    } else {
-      const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta);
-      ta.select(); document.execCommand('copy'); ta.remove();
-      alert('Plain text copied (fallback) ✅');
-    }
-  } catch (e) {
-    alert('Copy failed.');
+    showToast('Styled text copied');
+  }catch(e){
+    showToast('Copy failed');
   }
 }
 
-/* input events */
+async function copyPlain(){
+  try{
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      await navigator.clipboard.writeText(baseText);
+    }else{
+      const ta = document.createElement('textarea');
+      ta.value = baseText;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      ta.remove();
+    }
+    showToast('Plain text copied');
+  }catch(e){
+    showToast('Copy failed');
+  }
+}
+
 articleInput.addEventListener('input', () => {
-  // when typing, update selected preview live
-  updatePreviews();
+  baseText = articleInput.value || '';
+  updateCardPreviews();
 });
 
-/* attach copy buttons */
 copyStyledBtn.addEventListener('click', copyStyled);
 copyPlainBtn.addEventListener('click', copyPlain);
 
 /* init */
+baseText = articleInput.value || '';
 buildGrid();
-updatePreviews();
 </script>
 </body>
 </html>
